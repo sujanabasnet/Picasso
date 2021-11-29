@@ -11,13 +11,15 @@ import picasso.parser.language.ExpressionTreeNode;
  */
 public abstract class BinaryOperator extends ExpressionTreeNode {
 
-	ExpressionTreeNode param;
+	ExpressionTreeNode left;
+	ExpressionTreeNode right;
 
 	/**
 	 * 
 	 */
-	public BinaryOperator(ExpressionTreeNode param) {
-		this.param = param;
+	public BinaryOperator(ExpressionTreeNode left, ExpressionTreeNode right) {
+		this.left = left;
+		this.right = right; 
 	}
 
 	/**
@@ -27,9 +29,8 @@ public abstract class BinaryOperator extends ExpressionTreeNode {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
-		String classname = this.getClass().getName();
-		return classname.substring(classname.lastIndexOf(".")) + "(" + param + ")";
+	public String toString() {  //
+		return this.left + this.getOperation() + this.right;
 	} 
 
 	@Override
@@ -42,19 +43,17 @@ public abstract class BinaryOperator extends ExpressionTreeNode {
 			return false;
 		}
 
-		// Make sure the objects are the same type
-
-		if (o.getClass() != this.getClass()) {
-			return false;
-		}
-
 		BinaryOperator bo = (BinaryOperator) o;
 
 		// check if their parameters are equal
-		if (!this.param.equals(bo.param)) {
+		if (!this.left.equals(bo.left) && !this.right.equals(bo.right)) {
 			return false;
 		}
 		return true;
+	}
+	
+	public String getOperation() { //not finished jsut trying something 
+		return "operatation";
 	}
 
 }
