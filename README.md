@@ -18,8 +18,8 @@ See the specification for Picasso on the course web site
 The `images` directory contains some sample images generated from Picasso.  Some of the expressions for these images can be found in the `expressions` directory.
 
 ### Team Memebers
-Andrew Marsh
-Jared Cordova
-Praise Apata
-Sarah Martin
+Andrew Marsh,
+Jared Cordova,
+Praise Apata,
+Sarah Martin,
 Sujana Basnet
