@@ -30,6 +30,7 @@ public class Addition extends BinaryOperator {
 		return new RGBColor(red, green, blue);
 	}
 	
+	@Override
 	public String getOperation() {
 		return "+";
 	}
