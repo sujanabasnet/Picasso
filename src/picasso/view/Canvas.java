@@ -27,6 +27,7 @@ public class Canvas extends JPanel {
 	 */
 	public Canvas(JFrame container) {
 		this(container, null);
+		container.setTitle("X-Men: Sarah, Praise, Sujana, Andrew, Jared");
 	}
 
 	/**
