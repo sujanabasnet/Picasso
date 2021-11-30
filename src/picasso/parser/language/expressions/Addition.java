@@ -15,8 +15,8 @@ public class Addition extends BinaryOperator {
 	 * @param left
 	 * @param right
 	 */
-	public Addition(ExpressionTreeNode left, ExpressionTreeNode right) {
-		super(left, right);
+	public Addition(ExpressionTreeNode left, ExpressionTreeNode right, String operation) {
+		super(left, right, operation);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -33,7 +33,7 @@ public class Addition extends BinaryOperator {
 
 	@Override
 	public String getOperation() {
-		return "+";
+		return this.operation;
 	}
 
 }
