@@ -22,6 +22,8 @@ public class Frame extends JFrame {
 		// create GUI components
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
+//		Canvas popup = new Canvas(this);
+//		popup.setSize(size);
 
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
@@ -31,6 +33,7 @@ public class Frame extends JFrame {
 
 		// add our container to Frame and show it
 		getContentPane().add(canvas, BorderLayout.CENTER);
+//		getContentPane().add(popup, BorderLayout.SOUTH);
 		getContentPane().add(commands, BorderLayout.NORTH);
 		pack();
 	}

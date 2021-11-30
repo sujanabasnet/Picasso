@@ -48,13 +48,13 @@ public class Clamp extends UnaryFunction {
 		}
 		
 		if (result.getRed() < -1) {
-			red = 1;
+			red = -1;
 		}
 		if (result.getBlue() < -1) {
-			blue = 1;
+			blue = -1;
 		}
 		if (result.getGreen() < -1) {
-			green = 1;
+			green = -1;
 		}
 		
 		
