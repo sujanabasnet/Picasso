@@ -56,4 +56,7 @@ public abstract class BinaryOperator extends ExpressionTreeNode {
 		return "operatation";
 	}
 
+	public abstract String getOperation(); 
+
+
 }
