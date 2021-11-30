@@ -4,7 +4,7 @@
 package picasso.parser.tokens.functions;
 
 /**
- * Represents the ceiling function token.
+ * Represents the Clamp function token.
  * 
  * @author Sarah Martin
  */
