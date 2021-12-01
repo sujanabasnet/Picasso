@@ -11,10 +11,14 @@ import picasso.view.Frame;
  */
 public class Main {
 	public static final Dimension SIZE = new Dimension(600, 600);
+//	public static final Dimension SIZE_POPUP = new Dimension(200, 200);
 
 	public static void main(String[] args) {
 		Frame frame = new Frame(SIZE);
 		frame.setVisible(true);
+		
+//		Frame popup = new Frame(SIZE_POPUP);
+//		popup.setVisible(true);
 		
 	}
 }

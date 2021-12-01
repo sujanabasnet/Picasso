@@ -13,14 +13,15 @@ public abstract class BinaryOperator extends ExpressionTreeNode {
 
 	ExpressionTreeNode left;
 	ExpressionTreeNode right;
+	String operation;
 
 	/**
 	 * 
 	 */
-	public BinaryOperator(ExpressionTreeNode left, ExpressionTreeNode right) {
+	public BinaryOperator(ExpressionTreeNode left, ExpressionTreeNode right, String operation) {
 		this.left = left;
 		this.right = right; 
-	}
+		this.operation = operation;	}
 
 	/**
 	 * Returns the string representation of the function in the format "<ClassName>:
