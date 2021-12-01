@@ -92,10 +92,10 @@ public class ParsedExpressionTreeTests {
 	
 	@Test
 	public void cosineFunctionTests() {
-		ExpressionTreeNode e = parser.makeExpression("cos( x )");
+		ExpressionTreeNode e = parser.makeExpression("cosine( x )");
 		assertEquals(new Cosine(new X()), e);
 
-		e = parser.makeExpression("cos( x + y )");
+		e = parser.makeExpression("cosine( x + y )");
 		assertEquals(new Cosine(new Addition(new X(), new Y())), e);
 	}
 	
