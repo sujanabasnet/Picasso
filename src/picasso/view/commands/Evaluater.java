@@ -17,6 +17,12 @@ import picasso.util.Command;
 public class Evaluater implements Command<Pixmap> {
 	public static final double DOMAIN_MIN = -1;
 	public static final double DOMAIN_MAX = 1;
+	private String input;
+	
+	public Evaluater(String text) {
+		super();
+		this.input = text;
+	}
 
 	/**
 	 * Evaluate an expression for each point in the image.
@@ -53,11 +59,11 @@ public class Evaluater implements Command<Pixmap> {
 		// generate expression trees from strings, or you can create expression
 		// objects directly (as in the commented statement below).
 
-		String test = "ceil(y)";
+		//String test = "ceil(y)";
 		//String test = "x + y";
 
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
-		return expTreeGen.makeExpression(test);
+		return expTreeGen.makeExpression(input);
 
 		// return new Multiply( new X(), new Y() );
 	}
