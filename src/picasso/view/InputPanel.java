@@ -32,11 +32,9 @@ public class InputPanel extends JPanel {
 		button = new JButton("Evaluate");
 		button.addActionListener(new ActionListener() {
 		      public void actionPerformed(ActionEvent e) {
-		    	  if (e.getSource() == button) {
-		    		  Command<Pixmap> action = new ThreadedCommand<Pixmap>(myView, new Evaluater(textField.getText()));
-			    	  action.execute(myView.getPixmap());
-			    	  myView.refresh();
-		    	  }
+		    	  Command<Pixmap> action = new ThreadedCommand<Pixmap>(myView, new Evaluater(textField.getText()));
+		    	  action.execute(myView.getPixmap());
+		    	  myView.refresh();
 		      }
 		});
 		add(button);
