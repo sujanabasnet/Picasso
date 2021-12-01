@@ -82,6 +82,15 @@ public class ParsedExpressionTreeTests {
 	}
 	
 	@Test
+	public void logFunctionTests() {
+		ExpressionTreeNode e = parser.makeExpression("log( x )");
+		assertEquals(new Log(new X()), e);
+
+		e = parser.makeExpression("log( x + y )");
+		assertEquals(new Log(new Addition(new X(), new Y())), e);
+	}
+	
+	@Test
 	public void tanFunctionTests() {
 		ExpressionTreeNode e = parser.makeExpression("tan( x )");
 		assertEquals(new Tan(new X()), e);
