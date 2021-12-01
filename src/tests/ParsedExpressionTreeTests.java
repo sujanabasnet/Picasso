@@ -41,26 +41,26 @@ public class ParsedExpressionTreeTests {
 	@Test
 	public void additionExpressionTests() {
 		ExpressionTreeNode e = parser.makeExpression("x + y");
-		assertEquals(new Addition(new X(), new Y(), "+"), e);
+		assertEquals(new Addition(new X(), new Y()), e);
 		
 		// no spaces!
 		e = parser.makeExpression("x+y");
-		assertEquals(new Addition(new X(), new Y(), "+"), e);
+		assertEquals(new Addition(new X(), new Y()), e);
 
 		e = parser.makeExpression("[1,.3,-1] + y");
-		assertEquals(new Addition(new RGBColor(1, .3, -1), new Y(), "+"), e);
+		assertEquals(new Addition(new RGBColor(1, .3, -1), new Y()), e);
 		
 		e = parser.makeExpression("x + y + [ -.51, 0, 1]");
-		assertEquals(new Addition(new Addition(new X(), new Y(), "+"), new RGBColor(-.51, 0, 1), "+"), e);
+		assertEquals(new Addition(new Addition(new X(), new Y()), new RGBColor(-.51, 0, 1)), e);
 	}
 
 	@Test
 	public void parenthesesExpressionTests() {
 		ExpressionTreeNode e = parser.makeExpression("( x + y )");
-		assertEquals(new Addition(new X(), new Y(), "+"), e);
+		assertEquals(new Addition(new X(), new Y()), e);
 
 		e = parser.makeExpression("( x + (y + [ 1, 1, 1] ) )");
-		assertEquals(new Addition(new X(), new Addition(new Y(), new RGBColor(1, 1, 1), "+"), "+"), e);
+		assertEquals(new Addition(new X(), new Addition(new Y(), new RGBColor(1, 1, 1))), e);
 	}
 
 	@Test
@@ -69,7 +69,7 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new Floor(new X()), e);
 
 		e = parser.makeExpression("floor( x + y )");
-		assertEquals(new Floor(new Addition(new X(), new Y(), "+")), e);
+		assertEquals(new Floor(new Addition(new X(), new Y())), e);
 	}
 
 	@Test
@@ -78,7 +78,7 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new Ceil(new X()), e);
 
 		e = parser.makeExpression("ceil( x + y )");
-		assertEquals(new Ceil(new Addition(new X(), new Y(), "+")), e);
+		assertEquals(new Ceil(new Addition(new X(), new Y())), e);
 	}
 	
 	@Test
@@ -87,7 +87,7 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new Tan(new X()), e);
 
 		e = parser.makeExpression("tan( x + y )");
-		assertEquals(new Tan(new Addition(new X(), new Y(), "+")), e);
+		assertEquals(new Tan(new Addition(new X(), new Y())), e);
 	}
 
 
