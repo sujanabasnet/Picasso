@@ -12,14 +12,14 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author Sarah Martin
  * 
  */
-public class AbsoluteValue extends UnaryFunction {
+public class Absolute extends UnaryFunction {
 
 	/**
 	 * determines the absolute value of a given expression
 	 * 
 	 * @param param the expression to absolute value
 	 */
-	public AbsoluteValue(ExpressionTreeNode param) {
+	public Absolute(ExpressionTreeNode param) {
 		super(param);
 	}
 
@@ -47,10 +47,10 @@ public class AbsoluteValue extends UnaryFunction {
 		if (obj == this) {
 			return true;
 		}
-		if (!(obj instanceof AbsoluteValue)) {
+		if (!(obj instanceof Absolute)) {
 			return false;
 		}
-		AbsoluteValue av = (AbsoluteValue) obj;
+		Absolute av = (Absolute) obj;
 		return param.equals(av.param);
 	}
 
