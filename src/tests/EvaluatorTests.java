@@ -47,6 +47,12 @@ public class EvaluatorTests {
 		}
 	}
 
-	// TODO: More tests of evaluation
-
+	@Test
+	public void testFloorEvaluation() {
+		Y y = new Y();
+		Floor f = new Floor(y);
+		assertEquals(new RGBColor(-1, -1, -1), f.evaluate(-0.5,  -0.5));
+		assertEquals(new RGBColor(0, 0, 0), f.evaluate(0.5,  0.5));
+	}
+	
 }
