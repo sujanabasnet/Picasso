@@ -46,7 +46,18 @@ public class EvaluatorTests {
 			assertEquals(new RGBColor(i, i, i), x.evaluate(i, i));
 		}
 	}
+	
+	@Test
+	public void testYEvaluation() {
+		Y y = new Y();
+		for (int i = -1; i <= 1; i++) {
+			assertEquals(new RGBColor(i, i, i), y.evaluate(i, i));
+		}
+	}
+	
+	
 
 	// TODO: More tests of evaluation
 
 }
+
