@@ -8,14 +8,14 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author Praise Apata
  *
  */
-public class ArcTan extends UnaryFunction {
+public class Atan extends UnaryFunction {
 
 	/**
 	 * Create a arc tangent expression that takes as a parameter the given expression
 	 * 
 	 * @param param the expression to arc tangent
 	 */
-	public ArcTan(ExpressionTreeNode param) {
+	public Atan(ExpressionTreeNode param) {
 		super(param);
 	}
 
@@ -45,10 +45,10 @@ public class ArcTan extends UnaryFunction {
 		if (obj == this) {
 			return true;
 		}
-		if (!(obj instanceof ArcTan)) {
+		if (!(obj instanceof Atan)) {
 			return false;
 		}
-		ArcTan a = (ArcTan) obj;
+		Atan a = (Atan) obj;
 		return param.equals(a.param);
 	}
 
