@@ -133,6 +133,23 @@ public class ParsedExpressionTreeTests {
 		e = parser.makeExpression("exp( x + y )");
 		assertEquals(new Exp(new Addition(new X(), new Y())), e);
 	}
+	
+	@Test
+	public void absFunctionTests() {
+		ExpressionTreeNode e = parser.makeExpression("absolute( x )");
+		assertEquals(new Absolute(new X()), e);
 
+		e = parser.makeExpression("absolute( x + y )");
+		assertEquals(new Absolute(new Addition(new X(), new Y())), e);
+	}
+	
+	@Test
+	public void clampFunctionTests() {
+		ExpressionTreeNode e = parser.makeExpression("clamp( x )");
+		assertEquals(new Clamp(new X()), e);
+
+		e = parser.makeExpression("clamp( x + y )");
+		assertEquals(new Clamp(new Addition(new X(), new Y())), e);
+	}
 
 }
