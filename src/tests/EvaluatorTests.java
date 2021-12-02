@@ -62,7 +62,30 @@ public class EvaluatorTests {
 		Y y = new Y();
 		Floor f = new Floor(y);
 		assertEquals(new RGBColor(-1, -1, -1), f.evaluate(-0.5,  -0.5));
+		assertEquals(new RGBColor(0, 0, 0), f.evaluate(0, 0));
 		assertEquals(new RGBColor(0, 0, 0), f.evaluate(0.5,  0.5));
+		
+		X x = new X();
+		f = new Floor(x);
+		assertEquals(new RGBColor(-1, -1, -1), f.evaluate(-0.5,  -0.5));
+		assertEquals(new RGBColor(0, 0, 0), f.evaluate(0, 0));
+		assertEquals(new RGBColor(0, 0, 0), f.evaluate(0.5,  0.5));
+	}
+	
+	@Test
+	public void testCeilEvaluation() {
+		Y y = new Y();
+		Ceil c = new Ceil(y);
+		assertEquals(new RGBColor(0, 0, 0), c.evaluate(-0.5,  -0.5));
+		assertEquals(new RGBColor(0, 0, 0), c.evaluate(0, 0));
+		assertEquals(new RGBColor(1, 1, 1), c.evaluate(0.5,  0.5));
+		
+		X x = new X();
+		c = new Ceil(x);
+		assertEquals(new RGBColor(0, 0, 0), c.evaluate(-0.5,  -0.5));
+		assertEquals(new RGBColor(0, 0, 0), c.evaluate(0, 0));
+		assertEquals(new RGBColor(1, 1, 1), c.evaluate(0.5,  0.5));
+		
 	}
 	
 }
