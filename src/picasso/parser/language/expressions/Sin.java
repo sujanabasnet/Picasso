@@ -23,10 +23,10 @@ public class Sin extends UnaryFunction {
 		}
 
 	/**
-	 * Evaluates this expression at the given x,y point by evaluating the tangent of
+	 * Evaluates this expression at the given x,y point by evaluating the sine of
 	 * the function's parameter.
 	 * 
-	 * @return the color from evaluating the tangent of the expression's parameter
+	 * @return the color from evaluating the sine of the expression's parameter
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {

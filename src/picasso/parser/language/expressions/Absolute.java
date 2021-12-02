@@ -27,7 +27,7 @@ public class Absolute extends UnaryFunction {
 	 * Evaluates this expression at the given x,y point by evaluating the absolute value of
 	 * the function's parameter.
 	 * 
-	 * @return the color from evaluating the floor of the expression's parameter
+	 * @return the color from evaluating the absolute value of the expression's parameter
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
@@ -38,9 +38,10 @@ public class Absolute extends UnaryFunction {
 		return new RGBColor(red, green, blue);
 	}
 
-	/*
-	 * 
-	 * 
+	/**
+	 * Returns a boolean on if the given objects are equal
+	 * @param Object obj
+	 * @return boolean
 	 */
 	@Override
 	public boolean equals(Object obj) {

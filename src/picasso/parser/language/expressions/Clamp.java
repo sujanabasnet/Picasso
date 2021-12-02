@@ -15,19 +15,19 @@ import picasso.parser.language.ExpressionTreeNode;
 public class Clamp extends UnaryFunction {
 
 	/**
-	 * determines the absolute value of a given expression
+	 * determines the clamped value of a given expression
 	 * 
-	 * @param param the expression to absolute value
+	 * @param param the expression to clamp
 	 */
 	public Clamp(ExpressionTreeNode param) {
 		super(param);
 	}
 
 	/**
-	 * Evaluates this expression at the given x,y point by evaluating the absolute value of
+	 * Evaluates this expression at the given x,y point by evaluating the clamping of
 	 * the function's parameter.
 	 * 
-	 * @return the color from evaluating the floor of the expression's parameter
+	 * @return the color from evaluating the clamp value of the expression's parameter
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
@@ -61,9 +61,10 @@ public class Clamp extends UnaryFunction {
 		return new RGBColor(red, green, blue);
 	}
 
-	/*
-	 * 
-	 * 
+	/**
+	 * Returns a boolean on if the given objects are equal
+	 * @param Object obj
+	 * @return boolean
 	 */
 	@Override
 	public boolean equals(Object obj) {
