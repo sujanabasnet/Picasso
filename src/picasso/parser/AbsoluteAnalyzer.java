@@ -10,6 +10,7 @@ import picasso.parser.language.expressions.Absolute;
 import picasso.parser.tokens.Token;
 
 /**
+ * Handles Parsing the Absolute Value Function
  * @author sarahmartin
  *
  */
