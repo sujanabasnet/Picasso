@@ -6,7 +6,7 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents the log function in the Picasso language.
+ * Represents the Absolute Value function in the Picasso language.
  * 
  * @author Robert C. Duvall
  * @author Sarah Martin
