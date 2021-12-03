@@ -88,5 +88,15 @@ public class EvaluatorTests {
 		
 	}
 	
+	@Test
+	public void testSinEvaluation() {
+		Y y = new Y();
+		Sin s = new Sin(y);
+		assertEquals(new RGBColor(Math.sin(0.5), Math.sin(0.5), Math.sin(0.5)), s.evaluate(0.5, 0.5));
+		
+		ExpressionTreeNode e = parser.makeExpression("x + y");
+		s = new Sin(e);
+		assertEquals(new RGBColor(Math.sin(-0.8 + 1), Math.sin(-0.8 + 1), Math.sin(-0.8 + 1)), s.evaluate(-0.8, 1));
+	}
 }
 
