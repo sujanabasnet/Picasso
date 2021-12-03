@@ -11,9 +11,11 @@ import org.junit.jupiter.api.Test;
 import picasso.parser.ParseException;
 import picasso.parser.Tokenizer;
 import picasso.parser.language.expressions.X;
+import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.*;
 import picasso.parser.tokens.chars.*;
 import picasso.parser.tokens.functions.*;
+import picasso.parser.tokens.operations.PlusToken;
 
 public class TokenizerTest {
 
@@ -70,6 +72,7 @@ public class TokenizerTest {
 		assertEquals(new ColorToken(-1, 0, .5), tokens.get(0));
 	}
 
+  
 	@Test
 	public void testTokenizeInvalidColor() {
 		String expression = "[1, 1.0001, 1]";
@@ -79,6 +82,7 @@ public class TokenizerTest {
 		});
 	}
 
+  
 	@Test
 	public void testTokenizeBasicFunctionExpression() {
 		String expression = "floor(x)";
@@ -94,7 +98,33 @@ public class TokenizerTest {
 		assertEquals(new LeftParenToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
+		
+		expression = "tan(x)";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new TanToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+		
+		expression = "atan(x)";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new AtanToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
 
+		expression = "abs(y)";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new AbsToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+		
+		expression = "clamp(y)";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new ClampToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
 	}
 
 	@Test
@@ -106,8 +136,49 @@ public class TokenizerTest {
 		expression = "sin(perlinColor(x, y))";
 		tokens = tokenizer.parseTokens(expression);
 		// TODO: Check the tokens...
+
+	
+		expression = "clamp(abs(x))";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new ClampToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new AbsToken(), tokens.get(2));
+		assertEquals(new LeftParenToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("x"), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		assertEquals(new RightParenToken(), tokens.get(6));
+		
+		expression = "abs(clamp(y))";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new AbsToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new ClampToken(), tokens.get(2));
+		assertEquals(new LeftParenToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("y"), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		assertEquals(new RightParenToken(), tokens.get(6));
+	
+		
+		expression = "sin(ceil(y))";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new SinToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new CeilToken(), tokens.get(2));
+		assertEquals(new LeftParenToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("y"), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		assertEquals(new RightParenToken(), tokens.get(6));
+		
 	}
 
-	// TODO: Test arithmetic (rather than function-based) expressions ...
+	@Test
+	public void testTokenizeArithmaticExpression() {
+		String expression = "x + y";
+		List<Token> tokens = tokenizer.parseTokens(expression);
+		assertEquals(new IdentifierToken("x"), tokens.get(0));
+		assertEquals(new PlusToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		
+	}
 
 }
