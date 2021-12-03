@@ -87,6 +87,7 @@ public class EvaluatorTests {
 		
 	}
 	
+	@Test
 	public void testTanEvaluation() {
 		Y y = new Y();
 		Tan t = new Tan(y);
@@ -112,6 +113,7 @@ public class EvaluatorTests {
 
 	}
 
+	@Test
 	public void testSinEvaluation() {
 		Y y = new Y();
 		Sin s = new Sin(y);
@@ -121,6 +123,72 @@ public class EvaluatorTests {
 		s = new Sin(e);
 		assertEquals(new RGBColor(Math.sin(-0.8 + 1), Math.sin(-0.8 + 1), Math.sin(-0.8 + 1)), s.evaluate(-0.8, 1));
 	}
+	
+	@Test
+	public void testLogEvaluation() {
+		Y y = new Y();
+		Log l = new Log(y);
+		assertEquals(new RGBColor(0, 0, 0), l.evaluate(1,  1));
 
+		X x = new X();
+		l = new Log(x);
+		assertEquals(new RGBColor(0, 0, 0), l.evaluate(1, 1));
+
+	}
+	
+	@Test
+	public void testAdditionEvaluation() {
+		X x = new X();
+		Y y = new Y();
+		Addition a = new Addition(x,y);
+		assertEquals(new RGBColor(1,1,1), a.evaluate(.5,  .5));
+
+	}
+	
+	@Test
+	public void testAbsEvaluation() {
+		Y y = new Y();
+		Abs a = new Abs(y);
+		assertEquals(new RGBColor(1, 1, 1), a.evaluate(-1,  1));
+
+		X x = new X();
+		a = new Abs(x);
+		assertEquals(new RGBColor(1, 1, 1), a.evaluate(1, -1));
+
+	}
+	
+	@Test
+	public void testClampEvaluation() {
+		Y y = new Y();
+		Clamp c = new Clamp(y);
+		assertEquals(new RGBColor(0, 0, 0), c.evaluate(0,  0));
+
+		X x = new X();
+		c = new Clamp(x);
+		assertEquals(new RGBColor(1, 1, 1), c.evaluate(2, 2));
+
+	}
+	
+	@Test
+	public void testCosEvaluation() {
+		Y y = new Y();
+		Cos c = new Cos(y);
+		assertEquals(new RGBColor(Math.cos(0.5), Math.cos(0.5), Math.cos(0.5)), c.evaluate(0.5, 0.5));
+		
+		ExpressionTreeNode e = parser.makeExpression("x + y");
+		c = new Cos(e);
+		assertEquals(new RGBColor(Math.cos(-0.8 + 1), Math.cos(-0.8 + 1), Math.cos(-0.8 + 1)), c.evaluate(-0.8, 1));
+	}
+	
+	@Test
+	public void testExpEvaluation() {
+		Y y = new Y();
+		Exp p = new Exp(y);
+		assertEquals(new RGBColor(1, 1, 1), p.evaluate(-1,  0));
+
+		X x = new X();
+		p = new Exp(x);
+		assertEquals(new RGBColor(1, 1, 1), p.evaluate(0, -1));	
+	}
 }
 
