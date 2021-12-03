@@ -96,6 +96,20 @@ public class TokenizerTest {
 		assertEquals(new LeftParenToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
+		
+		expression = "abs(y)";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new AbsToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+		
+		expression = "clamp(y)";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new ClampToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
 	}
 
 	@Test
@@ -107,6 +121,25 @@ public class TokenizerTest {
 		expression = "sin(perlinColor(x, y))";
 		tokens = tokenizer.parseTokens(expression);
 		// TODO: Check the tokens...
+	
+		expression = "clamp(abs(x))";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new ClampToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new AbsToken(), tokens.get(2));
+		assertEquals(new IdentifierToken("x"), tokens.get(6));
+		assertEquals(new RightParenToken(), tokens.get(7));
+		assertEquals(new RightParenToken(), tokens.get(7));
+		
+		expression = "abs(clamp(y))";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new AbsToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new ClampToken(), tokens.get(2));
+		assertEquals(new IdentifierToken("y"), tokens.get(6));
+		assertEquals(new RightParenToken(), tokens.get(7));
+		assertEquals(new RightParenToken(), tokens.get(7));
+	
 		
 		expression = "sin(ceil(y))";
 		tokens = tokenizer.parseTokens(expression);
