@@ -184,11 +184,11 @@ public class EvaluatorTests {
 	public void testExpEvaluation() {
 		Y y = new Y();
 		Exp p = new Exp(y);
-		assertEquals(new RGBColor(1, 1, 1), p.evaluate(-1,  1));
+		assertEquals(new RGBColor(1, 1, 1), p.evaluate(-1,  0));
 
 		X x = new X();
 		p = new Exp(x);
-		assertEquals(new RGBColor(1, 1, 1), p.evaluate(1, -1));	
+		assertEquals(new RGBColor(1, 1, 1), p.evaluate(0, -1));	
 	}
 }
 
