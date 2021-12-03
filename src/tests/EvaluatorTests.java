@@ -121,6 +121,25 @@ public class EvaluatorTests {
 		s = new Sin(e);
 		assertEquals(new RGBColor(Math.sin(-0.8 + 1), Math.sin(-0.8 + 1), Math.sin(-0.8 + 1)), s.evaluate(-0.8, 1));
 	}
+	
+	public void testLogEvaluation() {
+		Y y = new Y();
+		Log l = new Log(y);
+		assertEquals(new RGBColor(0, 0, 0), l.evaluate(1,  1));
+
+		X x = new X();
+		l = new Log(x);
+		assertEquals(new RGBColor(0, 0, 0), l.evaluate(1, 1));
+
+	}
+	
+	public void testAdditionEvaluation() {
+		X x = new X();
+		Y y = new Y();
+		Addition a = new Addition(x,y);
+		assertEquals(new RGBColor(1,1,1), a.evaluate(.5,  .5));
+
+	}
 
 }
 
