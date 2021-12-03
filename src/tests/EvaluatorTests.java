@@ -168,5 +168,27 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(1, 1, 1), c.evaluate(2, 2));
 
 	}
+	
+	@Test
+	public void testCosEvaluation() {
+		Y y = new Y();
+		Cos c = new Cos(y);
+		assertEquals(new RGBColor(Math.cos(0.5), Math.cos(0.5), Math.cos(0.5)), c.evaluate(0.5, 0.5));
+		
+		ExpressionTreeNode e = parser.makeExpression("x + y");
+		c = new Cos(e);
+		assertEquals(new RGBColor(Math.cos(-0.8 + 1), Math.cos(-0.8 + 1), Math.cos(-0.8 + 1)), c.evaluate(-0.8, 1));
+	}
+	
+	@Test
+	public void testExpEvaluation() {
+		Y y = new Y();
+		Exp p = new Exp(y);
+		assertEquals(new RGBColor(1, 1, 1), p.evaluate(-1,  1));
+
+		X x = new X();
+		p = new Exp(x);
+		assertEquals(new RGBColor(1, 1, 1), p.evaluate(1, -1));	
+	}
 }
 
