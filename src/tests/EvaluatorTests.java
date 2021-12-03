@@ -55,7 +55,6 @@ public class EvaluatorTests {
 		}
 	}
 	
-	
 
 	@Test
 	public void testFloorEvaluation() {
@@ -88,7 +87,31 @@ public class EvaluatorTests {
 		
 	}
 	
+	public void testTanEvaluation() {
+		Y y = new Y();
+		Tan t = new Tan(y);
+		assertEquals(new RGBColor(0, 0, 0), t.evaluate(0,  0));
+
+		
+		X x = new X();
+		t = new Tan(x);
+		assertEquals(new RGBColor(0, 0, 0), t.evaluate(0, 0));
+
+	}
+	
 	@Test
+	public void testAtanEvaluation() {
+		Y y = new Y();
+		Atan t = new Atan(y);
+		assertEquals(new RGBColor(0, 0, 0), t.evaluate(0,  0));
+
+		
+		X x = new X();
+		t = new Atan(x);
+		assertEquals(new RGBColor(0, 0, 0), t.evaluate(0, 0));
+
+	}
+
 	public void testSinEvaluation() {
 		Y y = new Y();
 		Sin s = new Sin(y);
@@ -98,5 +121,6 @@ public class EvaluatorTests {
 		s = new Sin(e);
 		assertEquals(new RGBColor(Math.sin(-0.8 + 1), Math.sin(-0.8 + 1), Math.sin(-0.8 + 1)), s.evaluate(-0.8, 1));
 	}
+
 }
 

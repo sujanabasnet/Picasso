@@ -18,7 +18,7 @@ public class Atan extends UnaryFunction {
 	public Atan(ExpressionTreeNode param) {
 		super(param);
 	}
-
+	
 	/**
 	 * Evaluates this expression at the given x,y point by evaluating the arc tangent of
 	 * the function's parameter.
