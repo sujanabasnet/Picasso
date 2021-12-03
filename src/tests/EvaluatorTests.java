@@ -87,7 +87,6 @@ public class EvaluatorTests {
 		
 	}
 	
-	@Test
 	public void testTanEvaluation() {
 		Y y = new Y();
 		Tan t = new Tan(y);
@@ -112,7 +111,16 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(0, 0, 0), t.evaluate(0, 0));
 
 	}
-	
-	
+
+	public void testSinEvaluation() {
+		Y y = new Y();
+		Sin s = new Sin(y);
+		assertEquals(new RGBColor(Math.sin(0.5), Math.sin(0.5), Math.sin(0.5)), s.evaluate(0.5, 0.5));
+		
+		ExpressionTreeNode e = parser.makeExpression("x + y");
+		s = new Sin(e);
+		assertEquals(new RGBColor(Math.sin(-0.8 + 1), Math.sin(-0.8 + 1), Math.sin(-0.8 + 1)), s.evaluate(-0.8, 1));
+	}
+
 }
 
