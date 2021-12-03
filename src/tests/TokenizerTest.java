@@ -184,6 +184,26 @@ public class TokenizerTest {
 		assertEquals(new RightParenToken(), tokens.get(5));
 		assertEquals(new RightParenToken(), tokens.get(6));
 		
+		expression = "tan(atan(x))";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new TanToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new AtanToken(), tokens.get(2));
+		assertEquals(new LeftParenToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("x"), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		assertEquals(new RightParenToken(), tokens.get(6));
+		
+		
+		expression = "atan(tan(y))";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new AtanToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new TanToken(), tokens.get(2));
+		assertEquals(new LeftParenToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("y"), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		assertEquals(new RightParenToken(), tokens.get(6));
 	}
 
 	@Test
