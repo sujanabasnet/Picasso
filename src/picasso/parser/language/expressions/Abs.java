@@ -12,14 +12,14 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author Sarah Martin
  * 
  */
-public class Absolute extends UnaryFunction {
+public class Abs extends UnaryFunction {
 
 	/**
 	 * determines the absolute value of a given expression
 	 * 
 	 * @param param the expression to absolute value
 	 */
-	public Absolute(ExpressionTreeNode param) {
+	public Abs(ExpressionTreeNode param) {
 		super(param);
 	}
 
@@ -27,7 +27,7 @@ public class Absolute extends UnaryFunction {
 	 * Evaluates this expression at the given x,y point by evaluating the absolute value of
 	 * the function's parameter.
 	 * 
-	 * @return the color from evaluating the floor of the expression's parameter
+	 * @return the color from evaluating the absolute value of the expression's parameter
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
@@ -38,19 +38,20 @@ public class Absolute extends UnaryFunction {
 		return new RGBColor(red, green, blue);
 	}
 
-	/*
-	 * 
-	 * 
+	/**
+	 * Returns a boolean on if the given objects are equal
+	 * @param Object obj
+	 * @return boolean
 	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == this) {
 			return true;
 		}
-		if (!(obj instanceof Absolute)) {
+		if (!(obj instanceof Abs)) {
 			return false;
 		}
-		Absolute av = (Absolute) obj;
+		Abs av = (Abs) obj;
 		return param.equals(av.param);
 	}
 

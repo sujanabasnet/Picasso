@@ -9,14 +9,14 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author Jared Cordova
  *
  */
-public class Cosine extends UnaryFunction {
+public class Cos extends UnaryFunction {
 
 	/**
 	 * Create a cosine expression that takes as a parameter the given expression
 	 * 
 	 * @param param the expression to cosine
 	 */
-	public Cosine(ExpressionTreeNode param) {
+	public Cos(ExpressionTreeNode param) {
 		super(param);
 	}
 
@@ -46,10 +46,10 @@ public class Cosine extends UnaryFunction {
 		if (obj == this) {
 			return true;
 		}
-		if (!(obj instanceof Cosine)) {
+		if (!(obj instanceof Cos)) {
 			return false;
 		}
-		Cosine c = (Cosine) obj;
+		Cos c = (Cos) obj;
 		return param.equals(c.param);
 	}
 
