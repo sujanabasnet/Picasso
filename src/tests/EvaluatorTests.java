@@ -136,7 +136,7 @@ public class EvaluatorTests {
 
 	}
 	
-	
+	@Test
 	public void testAdditionEvaluation() {
 		X x = new X();
 		Y y = new Y();
