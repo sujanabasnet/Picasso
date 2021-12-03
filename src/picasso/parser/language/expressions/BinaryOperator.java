@@ -39,7 +39,7 @@ public abstract class BinaryOperator extends ExpressionTreeNode {
 		if (o == this) {
 			return true;
 		}
-
+		
 		if (!(o instanceof BinaryOperator)) {
 			return false;
 		}

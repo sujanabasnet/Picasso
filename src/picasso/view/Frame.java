@@ -29,7 +29,7 @@ public class Frame extends JFrame {
 		// create GUI components
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
-
+		
 
 		
 		// add commands to test here

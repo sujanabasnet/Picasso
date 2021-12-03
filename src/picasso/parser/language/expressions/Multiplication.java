@@ -30,7 +30,6 @@ public class Multiplication extends BinaryOperator {
 		return new RGBColor(red, green, blue);
 	}
 	
-
 	@Override
 	public String getOperation() {
 		return this.operation;
