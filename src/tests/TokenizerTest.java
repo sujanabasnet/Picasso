@@ -11,9 +11,11 @@ import org.junit.jupiter.api.Test;
 import picasso.parser.ParseException;
 import picasso.parser.Tokenizer;
 import picasso.parser.language.expressions.X;
+import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.*;
 import picasso.parser.tokens.chars.*;
 import picasso.parser.tokens.functions.*;
+import picasso.parser.tokens.operations.PlusToken;
 
 public class TokenizerTest {
 
@@ -92,7 +94,7 @@ public class TokenizerTest {
 		tokens = tokenizer.parseTokens(expression);
 		assertEquals(new CeilToken(), tokens.get(0));
 		assertEquals(new LeftParenToken(), tokens.get(1));
-		assertEquals(new IdentifierToken(""), tokens.get(2));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
 
@@ -100,13 +102,32 @@ public class TokenizerTest {
 	public void testTokenizeCombinedFunctionExpression() {
 		String expression = "perlinColor(floor(x), y)";
 		List<Token> tokens = tokenizer.parseTokens(expression);
-		// TODO: Check the tokens...
+		
 
 		expression = "sin(perlinColor(x, y))";
 		tokens = tokenizer.parseTokens(expression);
 		// TODO: Check the tokens...
+		
+		expression = "sin(ceil(y))";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new SinToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new CeilToken(), tokens.get(2));
+		assertEquals(new LeftParenToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("y"), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		assertEquals(new RightParenToken(), tokens.get(6));
+		
 	}
 
-	// TODO: Test arithmetic (rather than function-based) expressions ...
+	@Test
+	public void testTokenizeArithmaticExpression() {
+		String expression = "x + y";
+		List<Token> tokens = tokenizer.parseTokens(expression);
+		assertEquals(new IdentifierToken("x"), tokens.get(0));
+		assertEquals(new PlusToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		
+	}
 
 }
