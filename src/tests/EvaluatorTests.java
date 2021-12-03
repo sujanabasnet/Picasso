@@ -146,6 +146,24 @@ public class EvaluatorTests {
 	}
 	
 	@Test
+	public void testSubtracitonEvaluation() {
+		X x = new X();
+		Y y = new Y();
+		Subtraction a = new Subtraction(x,y);
+		assertEquals(new RGBColor(.5,.5,.5), a.evaluate(1,  .5));
+
+	}
+	
+	@Test
+	public void testMultiplicationEvaluation() {
+		X x = new X();
+		Y y = new Y();
+		Multiplication a = new Multiplication(x,y);
+		assertEquals(new RGBColor(0,0,0), a.evaluate(0,  1));
+
+	}
+	
+	@Test
 	public void testAbsEvaluation() {
 		Y y = new Y();
 		Abs a = new Abs(y);
