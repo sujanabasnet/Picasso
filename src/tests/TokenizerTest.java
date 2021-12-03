@@ -72,6 +72,7 @@ public class TokenizerTest {
 		assertEquals(new ColorToken(-1, 0, .5), tokens.get(0));
 	}
 
+  
 	@Test
 	public void testTokenizeInvalidColor() {
 		String expression = "[1, 1.0001, 1]";
@@ -81,6 +82,7 @@ public class TokenizerTest {
 		});
 	}
 
+  
 	@Test
 	public void testTokenizeBasicFunctionExpression() {
 		String expression = "floor(x)";
@@ -97,6 +99,19 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
 		
+		expression = "tan(x)";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new TanToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+		
+		expression = "atan(x)";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new AtanToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+
 		expression = "abs(y)";
 		tokens = tokenizer.parseTokens(expression);
 		assertEquals(new AbsToken(), tokens.get(0));
@@ -121,6 +136,7 @@ public class TokenizerTest {
 		expression = "sin(perlinColor(x, y))";
 		tokens = tokenizer.parseTokens(expression);
 		// TODO: Check the tokens...
+
 	
 		expression = "clamp(abs(x))";
 		tokens = tokenizer.parseTokens(expression);
