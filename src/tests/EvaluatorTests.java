@@ -87,6 +87,7 @@ public class EvaluatorTests {
 		
 	}
 	
+	@Test
 	public void testTanEvaluation() {
 		Y y = new Y();
 		Tan t = new Tan(y);
@@ -112,6 +113,7 @@ public class EvaluatorTests {
 
 	}
 
+	@Test
 	public void testSinEvaluation() {
 		Y y = new Y();
 		Sin s = new Sin(y);
@@ -122,6 +124,7 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(Math.sin(-0.8 + 1), Math.sin(-0.8 + 1), Math.sin(-0.8 + 1)), s.evaluate(-0.8, 1));
 	}
 	
+	@Test
 	public void testLogEvaluation() {
 		Y y = new Y();
 		Log l = new Log(y);
@@ -133,6 +136,7 @@ public class EvaluatorTests {
 
 	}
 	
+	
 	public void testAdditionEvaluation() {
 		X x = new X();
 		Y y = new Y();
@@ -140,6 +144,29 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(1,1,1), a.evaluate(.5,  .5));
 
 	}
+	
+	@Test
+	public void testAbsEvaluation() {
+		Y y = new Y();
+		Abs a = new Abs(y);
+		assertEquals(new RGBColor(1, 1, 1), a.evaluate(-1,  1));
 
+		X x = new X();
+		a = new Abs(x);
+		assertEquals(new RGBColor(1, 1, 1), a.evaluate(1, -1));
+
+	}
+	
+	@Test
+	public void testClampEvaluation() {
+		Y y = new Y();
+		Clamp c = new Clamp(y);
+		assertEquals(new RGBColor(0, 0, 0), c.evaluate(0,  0));
+
+		X x = new X();
+		c = new Clamp(x);
+		assertEquals(new RGBColor(1, 1, 1), c.evaluate(2, 2));
+
+	}
 }
 
