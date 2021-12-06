@@ -108,7 +108,7 @@ public class ParsedExpressionTreeTests {
 	}
 	
 	@Test
-	public void DivisionExpressionTests() {
+	public void divisionExpressionTests() {
 		ExpressionTreeNode d = parser.makeExpression("x / y");
 		assertEquals(new Division(new X(), new Y()), d);
 		
@@ -116,11 +116,11 @@ public class ParsedExpressionTreeTests {
 		d = parser.makeExpression("x/y");
 		assertEquals(new Division(new X(), new Y()), d);
 
-		d = parser.makeExpression("[0,.5,1] / y");
+		d = parser.makeExpression("[0, .5, 1] / y");
 		assertEquals(new Division(new RGBColor(0, .5, 1), new Y()), d);
 		
 		d = parser.makeExpression("x / y / [ -.32, 1, 1]");
-		assertEquals(new Division(new Multiplication(new X(), new Y()), new RGBColor(-.32, 1, 1)), d);
+		assertEquals(new Division(new Division(new X(), new Y()), new RGBColor(-.32, 1, 1)), d);
 	}
 	
 	@Test
