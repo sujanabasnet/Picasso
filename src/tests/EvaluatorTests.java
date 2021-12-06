@@ -164,6 +164,15 @@ public class EvaluatorTests {
 	}
 	
 	@Test
+	public void testExponentiateEvaluation() {
+		X x = new X();
+		Y y = new Y();
+		Exponentiate a = new Exponentiate(x,y);
+		assertEquals(new RGBColor(0,0,0), a.evaluate(0,  1));
+
+	} 
+	
+	@Test
 	public void testAbsEvaluation() {
 		Y y = new Y();
 		Abs a = new Abs(y);
@@ -184,6 +193,18 @@ public class EvaluatorTests {
 		X x = new X();
 		c = new Clamp(x);
 		assertEquals(new RGBColor(1, 1, 1), c.evaluate(2, 2));
+
+	}
+	
+	@Test
+	public void testWrapEvaluation() {
+		Y y = new Y();
+		Wrap w = new Wrap(y);
+		assertEquals(new RGBColor(0, 0, 0), w.evaluate(0,  0));
+
+		X x = new X();
+		w = new Wrap(x);
+		assertEquals(new RGBColor(-0.5, -0.5, -0.5), w.evaluate(1.5, 1.5));
 
 	}
 	
