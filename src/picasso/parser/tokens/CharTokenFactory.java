@@ -38,6 +38,7 @@ public class CharTokenFactory {
 		tokenList[CharConstants.PLUS] = new PlusToken();
 		tokenList[CharConstants.MINUS] = new MinusToken();
 		tokenList[CharConstants.STAR] = new StarToken();
+		tokenList[CharConstants.EXPONENT] = new ExponentiateToken(); 
 
 
 		// TODO: What other tokens should be in here?
