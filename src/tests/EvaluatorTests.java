@@ -238,5 +238,12 @@ public class EvaluatorTests {
 		p = new Exp(x);
 		assertEquals(new RGBColor(1, 1, 1), p.evaluate(0, -1));	
 	}
+	/*
+	@Test
+	public void testRandomizerEvaluation() {
+		//Y y = new Y();
+		Randomizer r = new Randomizer();
+	
+	}*/
 }
 
