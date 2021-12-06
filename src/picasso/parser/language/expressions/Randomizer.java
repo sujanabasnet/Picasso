@@ -11,15 +11,15 @@ import java.util.Random;
  * @author Sarah Martin
  *
  */
-public class Randomizer {
+public class Randomizer extends MultipleArgumentFunctions{
 
-	Random random = new Random();
+	Random random;
 	/**
 	 * @param expr1
 	 * @param expr2
 	 */
 	public Randomizer() {
-		
+		random = new Random();
 	}
 
 	
