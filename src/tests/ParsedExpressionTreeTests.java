@@ -243,5 +243,12 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new PerlinBW(new Addition(new X(), new Y()), new Y()), e);
 		
 	}
+	
+	@Test
+	public void RandomizerFunctionTests() {
+		ExpressionTreeNode r = parser.makeExpression("random()");
+		assertEquals(new Randomizer(), r);
+		
+	}
 
 }
