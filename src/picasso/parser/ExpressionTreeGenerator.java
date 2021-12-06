@@ -25,6 +25,7 @@ public class ExpressionTreeGenerator {
 	private static final int ADD_OR_SUBTRACT = 2;
 	private static final int MULTIPLY_OR_DIVIDE = 3;
 
+
 	/**
 	 * Converts the given string into expression tree for easier manipulation.
 	 * 

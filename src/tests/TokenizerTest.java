@@ -125,6 +125,13 @@ public class TokenizerTest {
 		assertEquals(new LeftParenToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
+		
+		expression = "wrap(x)";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new WrapToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
 	}
 
 	@Test
@@ -204,6 +211,28 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("y"), tokens.get(4));
 		assertEquals(new RightParenToken(), tokens.get(5));
 		assertEquals(new RightParenToken(), tokens.get(6));
+		
+		
+		expression = "wrap(tan(x))";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new WrapToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new TanToken(), tokens.get(2));
+		assertEquals(new LeftParenToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("x"), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		assertEquals(new RightParenToken(), tokens.get(6));
+		
+		expression = "abs(wrap(y))";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new AbsToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new WrapToken(), tokens.get(2));
+		assertEquals(new LeftParenToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("y"), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		assertEquals(new RightParenToken(), tokens.get(6));
+		
 	}
 
 	@Test
