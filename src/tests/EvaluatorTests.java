@@ -164,6 +164,15 @@ public class EvaluatorTests {
 	}
 	
 	@Test
+	public void testDivisionEvaluation() {
+		X x = new X();
+		Y y = new Y();
+		Division a = new Division(x,y);
+		assertEquals(new RGBColor(1,1,1), a.evaluate(1,  1));
+
+	}
+	
+	@Test
 	public void testExponentiateEvaluation() {
 		X x = new X();
 		Y y = new Y();
