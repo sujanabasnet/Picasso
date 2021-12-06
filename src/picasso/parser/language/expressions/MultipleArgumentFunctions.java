@@ -20,6 +20,10 @@ public abstract class MultipleArgumentFunctions extends ExpressionTreeNode {
 		this.expr1 = expr1;
 		this.expr2 = expr2;
 	}
+	
+	public MultipleArgumentFunctions() {
+		
+	}
 
 	@Override
 	public String toString() {  //
