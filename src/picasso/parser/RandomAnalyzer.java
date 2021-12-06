@@ -8,7 +8,7 @@ import picasso.parser.language.expressions.Randomizer;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing the plus or "addition function".
+ * Handles parsing the random function
  * @author sarahmartin
  
  */
