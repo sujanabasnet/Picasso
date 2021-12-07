@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 import picasso.parser.ParseException;
 import picasso.parser.language.BuiltinFunctionsReader;
+import picasso.parser.language.CharConstants;
 import picasso.parser.tokens.chars.CommaToken;
 import picasso.parser.tokens.chars.LeftBracketToken;
 import picasso.parser.tokens.chars.RightBracketToken;
@@ -45,6 +46,8 @@ public class TokenFactory {
 			case '[':
 				// parse a color token if it starts with a [
 				return parseColorToken(tokenizer);
+			case CharConstants.QUOTE:
+				return new StringToken(tokenizer.sval);
 			default:
 				Token ct = CharTokenFactory.getToken(result);
 
@@ -58,6 +61,7 @@ public class TokenFactory {
 			throw new ParseException("io problem " + io);
 		}
 	}
+
 
 	/**
 	 * Parse a ColorToken

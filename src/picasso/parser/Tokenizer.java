@@ -58,7 +58,6 @@ public class Tokenizer {
 		// parsing numbers is a good idea, allow it
 		tokenizer.parseNumbers();
 		tokenizer.ordinaryChar('/');
-		tokenizer.ordinaryChar(CharConstants.QUOTE);
 
 		tokenizer.slashSlashComments(true);
 		tokenizer.slashStarComments(true);
