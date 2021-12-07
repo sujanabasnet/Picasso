@@ -57,8 +57,8 @@ public class Tokenizer {
 
 		// parsing numbers is a good idea, allow it
 		tokenizer.parseNumbers();
-
 		tokenizer.ordinaryChar('/');
+		tokenizer.ordinaryChar(CharConstants.QUOTE);
 
 		tokenizer.slashSlashComments(true);
 		tokenizer.slashStarComments(true);
@@ -127,7 +127,7 @@ public class Tokenizer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String expression = "sin(floor(x + y)) //+ [ -1, 1, 1] /* test */";
+		String expression = "imageWrap(\"image.jpg\", x, y)";
 
 		Tokenizer tokenizer = new Tokenizer();
 		System.out.println("Tokens" + tokenizer.parseTokens(expression));

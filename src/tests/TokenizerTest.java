@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import picasso.parser.ParseException;
 import picasso.parser.Tokenizer;
-import picasso.parser.language.expressions.X;
-import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.*;
 import picasso.parser.tokens.chars.*;
 import picasso.parser.tokens.functions.*;
@@ -126,6 +124,7 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
 		
+<<<<<<< HEAD
 		expression = "wrap(x)";
 		tokens = tokenizer.parseTokens(expression);
 		assertEquals(new WrapToken(), tokens.get(0));
@@ -138,6 +137,15 @@ public class TokenizerTest {
 		assertEquals(new RandomToken(), tokens.get(0));
 		assertEquals(new LeftParenToken(), tokens.get(1));
 		assertEquals(new RightParenToken(), tokens.get(2));
+=======
+		expression = "sin(x)";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new SinToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+		
+>>>>>>> refs/heads/myBranch
 	}
 
 	@Test
