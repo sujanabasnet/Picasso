@@ -36,7 +36,7 @@ public class Frame extends JFrame {
 		canvas.setSize(size);
 		
 		//history window 
-		Border blackline = BorderFactory.createTitledBorder("Saved");
+		Border blackline = BorderFactory.createTitledBorder("Pin");
 		JPanel historyPane = new JPanel();
 		historyPane.setBorder(blackline);
 
