@@ -17,17 +17,16 @@ public class EqualsAnalyzer implements SemanticAnalyzerInterface {
 
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
-		System.out.print(tokens);
 		tokens.pop(); 
 		ExpressionTreeNode expr = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
-		System.out.print(tokens);
-		if (tokens.peek() instanceof IdentifierToken) {
-			IdentifierToken t = (IdentifierToken) tokens.pop();
-			String id = t.getName();
-			return new Equals(id, expr);
+		while (!tokens.empty() ) {
+			if (tokens.peek() instanceof IdentifierToken) {
+				IdentifierToken t = (IdentifierToken) tokens.pop();
+				String id = t.getName();
+				return new Equals(id, expr);
+		}	
 		}
 		throw new ParseException("Expected a variable name.");
-		
 	}
 
 }
