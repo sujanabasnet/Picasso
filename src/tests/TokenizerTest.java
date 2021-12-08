@@ -274,5 +274,18 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		
 	}
+	
+	@Test
+	public void testAssignment() {
+		String expression = "a = sin(x)";
+		List<Token> tokens = tokenizer.parseTokens(expression);
+		assertEquals(new IdentifierToken("a"), tokens.get(0));
+		assertEquals(new EqualsToken(), tokens.get(1));
+		assertEquals(new SinToken(), tokens.get(2));
+		assertEquals(new LeftParenToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("x"), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+
+	}
 
 }
