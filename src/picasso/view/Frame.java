@@ -61,15 +61,12 @@ public class Frame extends JFrame {
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setLayoutOrientation(JList.VERTICAL);
 		list.setVisibleRowCount(6);
-		//add(new JScrollPane(list));
 		
         
         list.addListSelectionListener(new ListSelectionListener() {
             
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                //getContentPane().setBackground(colors[jList.getSelectedIndex()]);]
-            	//textField.setText(getName());
             	textField.setText(data.get(list.getSelectedIndex()));
             }
         });
@@ -101,7 +98,6 @@ public class Frame extends JFrame {
 		inputPane.add(textField);
 		inputPane.add(button2);
 		inputPane.add(button);
-		//historyPane.add(Header);
 		historyPane.add(list);
 		
 		
