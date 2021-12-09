@@ -28,10 +28,6 @@ public class Evaluater implements Command<Pixmap> {
 	public void execute(Pixmap target) {
 		// create the expression to evaluate just once
 		ExpressionTreeNode expr = createExpression();
-		
-		if (expr == null) {
-			JOptionPane.showMessageDialog(null, "Expression doesn't exist in the Picasso language.", "Error Notification", JOptionPane.ERROR_MESSAGE);
-		}
 		// evaluate it for each pixel
 		Dimension size = target.getSize();
 		for (int imageY = 0; imageY < size.height; imageY++) {

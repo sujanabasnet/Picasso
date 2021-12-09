@@ -163,7 +163,12 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 		if (analyzer == null) {
 			throw new ParseException("No semantic analyzer for " + t.getClass());
 		}
-		return analyzer.generateExpressionTree(tokens);
+		ExpressionTreeNode root = analyzer.generateExpressionTree(tokens);
+		if (root == null) {
+			throw new ParseException(
+					"Invalid Expression.");
+		}
+		return root;
 	}
 
 }
