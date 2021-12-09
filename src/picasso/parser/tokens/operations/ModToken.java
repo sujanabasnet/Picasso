@@ -4,8 +4,9 @@ import picasso.parser.language.CharConstants;
 import picasso.parser.tokens.chars.CharToken;
 
 /**
- * Represents the mod token
+ * Represents the modulo sign token
  * 
+ * @author Praise Apata
  */
 public class ModToken extends CharToken implements OperationInterface {
 	public ModToken() {

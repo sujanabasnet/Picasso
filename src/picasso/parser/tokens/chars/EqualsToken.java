@@ -1,12 +1,11 @@
-package picasso.parser.tokens.operations;
+package picasso.parser.tokens.chars;
 
 import picasso.parser.language.CharConstants;
-import picasso.parser.tokens.chars.CharToken;
 
 /**
  * Represents the equals sign in the Picasso programming language
  */
-public class EqualsToken extends CharToken implements OperationInterface{
+public class EqualsToken extends CharToken {
 	public EqualsToken() {
 		super(CharConstants.EQUAL);
 	}

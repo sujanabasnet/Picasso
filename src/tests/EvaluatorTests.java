@@ -190,6 +190,15 @@ public class EvaluatorTests {
 	} 
 	
 	@Test
+	public void testModEvaluation() {
+		X x = new X();
+		Y y = new Y();
+		Mod a = new Mod(x,y);
+		assertEquals(new RGBColor(0,0,0), a.evaluate(1,  1));
+
+	} 
+	
+	@Test
 	public void testAbsEvaluation() {
 		Y y = new Y();
 		Abs a = new Abs(y);

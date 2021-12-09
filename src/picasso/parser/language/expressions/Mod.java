@@ -1,13 +1,11 @@
-/**
- * 
- */
+
 package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
  * does the mod binary operator
- * @author Sarah Martin
+ * @author Praise Apata
  *
  */
 public class Mod extends BinaryOperator {
@@ -31,7 +29,6 @@ public class Mod extends BinaryOperator {
 		return new RGBColor(red, green, blue);
 	}
 	
-
 	@Override
 	public String getOperation() {
 		return this.operation;

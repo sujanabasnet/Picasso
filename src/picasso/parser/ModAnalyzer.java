@@ -7,10 +7,8 @@ import picasso.parser.language.expressions.Mod;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing of the mod function.
- * 
- * @author Robert C. Duvall
- * @author Sarah Martin
+ * Handles parsing the modulo.
+ * @author Praise Apata
  * 
  */
 public class ModAnalyzer implements SemanticAnalyzerInterface {
