@@ -106,6 +106,22 @@ public class ParsedExpressionTreeTests {
 		e = parser.makeExpression("x * y * [ -.51, 0, 1]");
 		assertEquals(new Multiplication(new Multiplication(new X(), new Y()), new RGBColor(-.51, 0, 1)), e);
 	}
+
+	@Test
+	public void modExpressionTests() {
+		ExpressionTreeNode m = parser.makeExpression("x % y");
+		assertEquals(new Multiplication(new X(), new Y()), m);
+		
+		// no spaces!
+		m = parser.makeExpression("x%y");
+		assertEquals(new Mod(new X(), new Y()), m);
+
+		m = parser.makeExpression("[1,.5,-1] % y");
+		assertEquals(new Mod(new RGBColor(1, .5, -1), new Y()), m);
+		
+		m = parser.makeExpression("x % y % [ -.51, 0, 1]");
+		assertEquals(new Mod(new Mod(new X(), new Y()), new RGBColor(-.51, 0, 1)), m);
+	}
 	
 	@Test
 	public void modExpressionTests() {
@@ -265,6 +281,27 @@ public class ParsedExpressionTreeTests {
 	public void RandomizerFunctionTests() {
 		ExpressionTreeNode r = parser.makeExpression("random()");
 		assertEquals(new Randomizer(), r);
+		
+	}
+	
+	@Test
+	public void AssignmentTest() {
+		String b = "b";
+		// e1 = new X();
+		
+		ExpressionTreeNode assign1 = parser.makeExpression("b=x");
+		
+		assertEquals(new Equals(b, new X()), assign1);
+	}
+	
+	@Test
+	public void AssignmentAddTests() {
+		String a = "a";
+		//ExpressionTreeNode e = new Addition(new X(), new Y());
+		
+		ExpressionTreeNode assign = parser.makeExpression("a = x + y");
+		
+		assertEquals(new Equals(a, new Addition(new X(), new Y())), assign);
 		
 	}
 

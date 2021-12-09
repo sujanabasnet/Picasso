@@ -291,7 +291,23 @@ public class TokenizerTest {
 		assertEquals(new LeftParenToken(), tokens.get(3));
 		assertEquals(new IdentifierToken("x"), tokens.get(4));
 		assertEquals(new RightParenToken(), tokens.get(5));
-
+		
+		expression = "a = x";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new IdentifierToken("a"), tokens.get(0));
+		assertEquals(new EqualsToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+		//assertEquals(new PlusToken(), tokens.get(3));
+		//assertEquals(new IdentifierToken("y"), tokens.get(4));
+		
+		expression = "a = x + y";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new IdentifierToken("a"), tokens.get(0));
+		assertEquals(new EqualsToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+		assertEquals(new PlusToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("y"), tokens.get(4));
+		//assertEquals(new RightParenToken(), tokens.get(5));
 	}
 
 }

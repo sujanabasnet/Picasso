@@ -171,6 +171,14 @@ public class EvaluatorTests {
 		assertEquals(new RGBColor(1,1,1), a.evaluate(1,  1));
 
 	}
+
+	@Test
+	public void testModEvaluation() {
+		X x = new X();
+		Y y = new Y();
+		Mod a = new Mod(x,y);
+		assertEquals(new RGBColor(1,1,1), a.evaluate(3,  2));
+	}
 	
 	@Test
 	public void testExponentiateEvaluation() {

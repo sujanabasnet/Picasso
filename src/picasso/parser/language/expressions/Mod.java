@@ -4,6 +4,7 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
+ * does the mod binary operator
  * @author Praise Apata
  *
  */

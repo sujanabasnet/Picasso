@@ -15,9 +15,7 @@ public class ModAnalyzer implements SemanticAnalyzerInterface {
 
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
-		tokens.pop(); // Remove the star token
-		// the parameters are the next tokens on the stack.
-		// But, they need to be processed
+		tokens.pop(); // Remove the mod token
 		ExpressionTreeNode second = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		ExpressionTreeNode first = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		return new Mod(first, second);
