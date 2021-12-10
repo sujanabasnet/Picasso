@@ -16,7 +16,6 @@ import picasso.view.commands.Evaluater;
 public class ImageWrap extends MultipleArgumentFunctions {
 
 	private Pixmap image;
-	private String name;
 
 	/**
 	 * @param image
@@ -25,7 +24,7 @@ public class ImageWrap extends MultipleArgumentFunctions {
 	 */
 	public ImageWrap(String name, ExpressionTreeNode expr1, ExpressionTreeNode expr2) {
 		super(expr1, expr2);
-		this.name = name;
+		image = new Pixmap(new Pixmap(name));
 
 	}
 
@@ -35,7 +34,6 @@ public class ImageWrap extends MultipleArgumentFunctions {
 		RGBColor b = expr2.evaluate(x, y);
 		double newX = MathHelp.wrap(a.getRed(), -1, 1);
 		double newY = MathHelp.wrap(b.getRed(), -1, 1);
-		image = new Pixmap(new Pixmap(name));
 		Dimension size = image.getSize();
 		int evalX = domainToImageScale(newX, size.width);
 		int evalY = domainToImageScale(newY, size.height);	
