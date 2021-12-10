@@ -5,16 +5,11 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.Border;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.JList;
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicArrowButton;
 import picasso.model.Pixmap;
 import picasso.util.Command;
 import picasso.util.ThreadedCommand;
@@ -40,6 +35,9 @@ public class Frame extends JFrame {
 		JPanel historyPane = new JPanel();
 		historyPane.setBorder(blackline);
 
+		//arrows (NOT FUNCTIONAL YET - NO EVENT LISTENER)
+		BasicArrowButton upArrow = new BasicArrowButton(BasicArrowButton.NORTH);
+		BasicArrowButton downArrow = new BasicArrowButton(BasicArrowButton.SOUTH);
 		
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
