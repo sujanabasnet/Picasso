@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Stack;
 
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.Equals;
 import picasso.parser.language.expressions.X;
 import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.IdentifierToken;
@@ -19,19 +18,19 @@ import picasso.parser.tokens.Token;
  */
 public class IdentifierAnalyzer implements SemanticAnalyzerInterface {
 
-	ExpressionTreeNode idToExpression;
+	static Map<String, ExpressionTreeNode> idToExpression = new HashMap<String, ExpressionTreeNode>();
 
 	static {
 		// We always have x and y defined.
-		new Equals("x", new X());
-		new Equals("y", new Y());
+		idToExpression.put("x", new X());
+		idToExpression.put("y", new Y());
 	}
 
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		IdentifierToken t = (IdentifierToken) tokens.pop();
 		String id = t.getName();
-		ExpressionTreeNode mapped = Equals.getExpression(id);
+		ExpressionTreeNode mapped = idToExpression.get(id);
 		if (mapped != null) {
 			return mapped;
 		}
