@@ -5,14 +5,13 @@ import java.util.Stack;
 import javax.swing.JOptionPane;
 
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.Equals;
 import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
 
 /**
  * Handles parsing the plus or "addition function".
  * 
- * @author andrew marsh
+ * @author andrew marsh, sujanabasnet
  * 
  */
 public class EqualsAnalyzer implements SemanticAnalyzerInterface {
@@ -28,7 +27,8 @@ public class EqualsAnalyzer implements SemanticAnalyzerInterface {
 			if (tokens.peek() instanceof IdentifierToken) {
 				IdentifierToken t = (IdentifierToken) tokens.pop();
 				String id = t.getName();
-				return new Equals(id, expr);
+				IdentifierAnalyzer.idToExpression.put(id, expr);
+				return expr;
 		}	
 		}
 		throw new ParseException("Expected a variable name.");

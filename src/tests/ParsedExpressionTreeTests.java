@@ -270,24 +270,22 @@ public class ParsedExpressionTreeTests {
 	}
 	
 	@Test
-	public void AssignmentTest() {
-		String b = "b";
-		// e1 = new X();
+	public void assignmentTests() {
+		ExpressionTreeNode e = parser.makeExpression("a = x + y");
+		ExpressionTreeNode s = parser.makeExpression("a");
+		assertEquals(s, e);
 		
-		ExpressionTreeNode assign1 = parser.makeExpression("b=x");
-		
-		assertEquals(new Equals(b, new X()), assign1);
+		e = parser.makeExpression(" b = sin(y)");
+		s = parser.makeExpression("b");
+		assertEquals(s, e);
 	}
+		
 	
 	@Test
-	public void AssignmentAddTests() {
-		String a = "a";
-		//ExpressionTreeNode e = new Addition(new X(), new Y());
-		
-		ExpressionTreeNode assign = parser.makeExpression("a = x + y");
-		
-		assertEquals(new Equals(a, new Addition(new X(), new Y())), assign);
-		
+	public void imageWrapTests() {
+		String image = "\"image.jpg\"";
+		ExpressionTreeNode e = parser.makeExpression("imageWrap(\"image.jpg\", x+x, y)");
+		assertEquals(new ImageWrap(image, new Addition(new X(), new Y()), new Y()), e);
 	}
 
 }

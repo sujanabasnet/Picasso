@@ -52,7 +52,12 @@ public class ExpressionTreeGenerator {
 		// Is this the best place to put this check?
 		if (!postfix.isEmpty()) {
 			throw new ParseException(
-					"Extra operands without operators or functions");
+					"Invalid Input: Extra operands without operators or functions");
+		}
+		
+		if (root == null) {
+			throw new ParseException(
+					"Invalid Input");
 		}
 		return root;
 	}
