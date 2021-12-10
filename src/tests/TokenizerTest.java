@@ -297,8 +297,7 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("a"), tokens.get(0));
 		assertEquals(new EqualsToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("x"), tokens.get(2));
-		//assertEquals(new PlusToken(), tokens.get(3));
-		//assertEquals(new IdentifierToken("y"), tokens.get(4));
+
 		
 		expression = "a = x + y";
 		tokens = tokenizer.parseTokens(expression);
@@ -307,7 +306,24 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("x"), tokens.get(2));
 		assertEquals(new PlusToken(), tokens.get(3));
 		assertEquals(new IdentifierToken("y"), tokens.get(4));
-		//assertEquals(new RightParenToken(), tokens.get(5));
+
+	}
+	
+	@Test
+	public void testImageWrap() {
+		String expression = "imageWrap(\"image.jpg\", x + x, y)";
+		List<Token> tokens = tokenizer.parseTokens(expression);
+		assertEquals(new ImageWrapToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new StringToken("image.jpg"), tokens.get(2));
+		assertEquals(new CommaToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("x"), tokens.get(4));
+		assertEquals(new PlusToken(), tokens.get(5));
+		assertEquals(new IdentifierToken("x"), tokens.get(6));
+		assertEquals(new CommaToken(), tokens.get(7));
+		assertEquals(new IdentifierToken("y"), tokens.get(8));
+		assertEquals(new RightParenToken(), tokens.get(9));
+		
 	}
 
 }
