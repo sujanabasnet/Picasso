@@ -2,7 +2,7 @@ package picasso.parser;
 
 import java.util.Stack;
 
-import javax.swing.JOptionPane;
+
 
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.tokens.IdentifierToken;
@@ -20,16 +20,19 @@ public class EqualsAnalyzer implements SemanticAnalyzerInterface {
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		tokens.pop(); 
 		ExpressionTreeNode expr = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
-		if (expr == null) {
-			JOptionPane.showMessageDialog(null, "Expression doesn't exist in the Picasso language.", "Error Notification", JOptionPane.ERROR_MESSAGE);
-		}
-		while (!tokens.empty() ) {
+		System.out.println(tokens);
+		if (!tokens.isEmpty()) {
 			if (tokens.peek() instanceof IdentifierToken) {
 				IdentifierToken t = (IdentifierToken) tokens.pop();
 				String id = t.getName();
-				IdentifierAnalyzer.idToExpression.put(id, expr);
-				return expr;
-		}	
+				if (!(id.equals("x") || id.equals("y"))) {
+					IdentifierAnalyzer.idToExpression.put(t.getName(), expr);
+					return expr;
+				}
+				throw new ParseException("Variable name cannot be x or y.");
+					
+				}
+			throw new ParseException("Variable name cannot be a number, color, or function.");
 		}
 		throw new ParseException("Expected a variable name.");
 	}

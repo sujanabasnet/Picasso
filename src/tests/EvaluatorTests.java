@@ -223,6 +223,8 @@ public class EvaluatorTests {
 		X x = new X();
 		w = new Wrap(x);
 		assertEquals(new RGBColor(-0.5, -0.5, -0.5), w.evaluate(1.5, 1.5));
+		assertEquals(new RGBColor(0, 0, 0), w.evaluate(-2, -2));
+	
 
 	}
 	
@@ -254,5 +256,15 @@ public class EvaluatorTests {
 		Randomizer r = new Randomizer();
 	
 	}*/
+	
+	@Test
+	public void testImageWrap() {
+		X x = new X();
+		Y y = new Y();
+		Addition plus = new Addition(x, x);
+		ImageWrap wrap = new ImageWrap("test.jpg", plus, y);
+		assertEquals(new RGBColor(0, 0, 0), wrap.evaluate(-1, -1));
+	}
+	
 }
 
