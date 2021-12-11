@@ -5,6 +5,7 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
+ * Parent class for the functions without any arguments.
  * @author sarahmartin
  *
  */

@@ -7,7 +7,7 @@ import picasso.parser.language.expressions.PerlinColor;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing the plus or "addition function".
+ * Handles parsing of the PerlinColor Function.
  * 
  
  */
