@@ -4,6 +4,7 @@
 package picasso.parser.tokens.functions;
 
 /**
+ * Represents the Sine function token.
  * @author sujanabasnet
  *
  */

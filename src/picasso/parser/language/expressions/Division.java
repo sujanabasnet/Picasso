@@ -6,6 +6,7 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
+ * Represents the Division binary operator.
  * @author Jared Cordova
  *
  */

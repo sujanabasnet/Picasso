@@ -4,6 +4,7 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
+ * Represents the Exponent binary operator.
  * @author Praise Apata
  *
  */

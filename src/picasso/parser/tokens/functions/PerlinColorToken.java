@@ -4,7 +4,7 @@
 package picasso.parser.tokens.functions;
 
 /**
- * Represents the AbsoluteValue function token.
+ * Represents the PerlinColor function token.
  * 
  */
 

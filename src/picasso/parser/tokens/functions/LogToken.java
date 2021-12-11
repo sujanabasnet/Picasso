@@ -1,7 +1,7 @@
 package picasso.parser.tokens.functions;
 
 /**
- * Represents the floor function token
+ * Represents the log function token
  * 
  */
 public class LogToken extends FunctionToken {

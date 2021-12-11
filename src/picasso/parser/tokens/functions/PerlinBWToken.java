@@ -2,7 +2,7 @@
 package picasso.parser.tokens.functions;
 
 /**
- * Represents the AbsoluteValue function token.
+ * Represents the PerlinBW function token.
  * 
  */
 

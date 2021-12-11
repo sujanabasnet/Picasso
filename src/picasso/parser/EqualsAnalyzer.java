@@ -9,7 +9,7 @@ import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing the plus or "addition function".
+ * Handles parsing the assignment functionality.
  * 
  * @author andrew marsh, sujanabasnet
  * 
