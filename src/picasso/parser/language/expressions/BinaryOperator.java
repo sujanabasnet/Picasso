@@ -13,7 +13,7 @@ public abstract class BinaryOperator extends ExpressionTreeNode {
 
 	ExpressionTreeNode left;
 	ExpressionTreeNode right;
-	String operation;
+
 
 	/**
 	 * 

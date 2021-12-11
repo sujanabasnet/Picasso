@@ -17,7 +17,6 @@ public class Multiplication extends BinaryOperator {
 	 */
 	public Multiplication(ExpressionTreeNode left, ExpressionTreeNode right) {
 		super(left, right);
-		this.operation = "*";
 	}
 
 	@Override
@@ -32,7 +31,7 @@ public class Multiplication extends BinaryOperator {
 	
 	@Override
 	public String getOperation() {
-		return this.operation;
+		return "*";
 	}
 
 }

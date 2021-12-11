@@ -4,6 +4,8 @@
 package picasso.parser.language.expressions;
 
 import java.awt.Dimension;
+
+import helper.Image;
 import helper.MathHelp;
 import picasso.model.Pixmap;
 import picasso.parser.language.ExpressionTreeNode;
@@ -15,7 +17,7 @@ import picasso.view.commands.Evaluater;
  */
 public class ImageWrap extends MultipleArgumentFunctions {
 
-	private Pixmap image;
+	private Image image;
 
 	/**
 	 * @param image
@@ -24,7 +26,7 @@ public class ImageWrap extends MultipleArgumentFunctions {
 	 */
 	public ImageWrap(String name, ExpressionTreeNode expr1, ExpressionTreeNode expr2) {
 		super(expr1, expr2);
-		image = new Pixmap(name);
+		image = new Image(name);
 	}
 
 	@Override
@@ -34,15 +36,12 @@ public class ImageWrap extends MultipleArgumentFunctions {
 		double newX = MathHelp.wrap(a.getRed());
 		double newY = MathHelp.wrap(b.getRed());
 		Dimension size = image.getSize();
-		int evalX = domainToImageScale(newX, size.width);
-		int evalY = domainToImageScale(newY, size.height);	
+		int evalX = Image.domainToImageScale(newX, size.width);
+		int evalY = Image.domainToImageScale(newY, size.height);	
 		return new RGBColor(image.getColor(evalX, evalY));
 	}
 
-	public static int domainToImageScale(double value, int bounds) {
-		double range = Evaluater.DOMAIN_MAX - Evaluater.DOMAIN_MIN;
-		return (int) (((value - Evaluater.DOMAIN_MIN) / range) * bounds);
-	}
+
 
 
 }

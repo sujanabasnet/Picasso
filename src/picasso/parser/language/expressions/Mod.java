@@ -16,7 +16,7 @@ public class Mod extends BinaryOperator {
 	 */
 	public Mod(ExpressionTreeNode left, ExpressionTreeNode right) {
 		super(left, right);
-		this.operation = "%";
+
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class Mod extends BinaryOperator {
 	
 	@Override
 	public String getOperation() {
-		return this.operation;
+		return "%";
 	}
 
 }

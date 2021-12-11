@@ -17,7 +17,7 @@ public class Division extends BinaryOperator {
 	 */
 	public Division(ExpressionTreeNode left, ExpressionTreeNode right) {
 		super(left, right);
-		this.operation = "/";
+	
 	}
 	/** 
 	 * This provides the code for the division binary operator
@@ -34,7 +34,7 @@ public class Division extends BinaryOperator {
 	
 	@Override
 	public String getOperation() {
-		return this.operation;
+		return "/";
 	}
 
 }

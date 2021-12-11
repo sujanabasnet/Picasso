@@ -17,7 +17,6 @@ public class Subtraction extends BinaryOperator {
 	 */
 	public Subtraction(ExpressionTreeNode left, ExpressionTreeNode right) {
 		super(left, right);
-		this.operation = "-";
 	}
 
 	@Override
@@ -33,7 +32,7 @@ public class Subtraction extends BinaryOperator {
 
 	@Override
 	public String getOperation() {
-		return this.operation;
+		return "-";
 	}
 
 }

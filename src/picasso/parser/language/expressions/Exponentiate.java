@@ -15,7 +15,6 @@ public class Exponentiate extends BinaryOperator {
 	 */
 	public Exponentiate(ExpressionTreeNode left, ExpressionTreeNode right) {
 		super(left, right);
-		this.operation = "^";
 	}
 
 	@Override
@@ -30,7 +29,7 @@ public class Exponentiate extends BinaryOperator {
 	
 	@Override
 	public String getOperation() {
-		return this.operation;
+		return "^";
 	}
 
 }

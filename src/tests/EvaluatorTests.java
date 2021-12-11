@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import helper.Image;
 import picasso.parser.ExpressionTreeGenerator;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
@@ -218,12 +219,16 @@ public class EvaluatorTests {
 	public void testWrapEvaluation() {
 		Y y = new Y();
 		Wrap w = new Wrap(y);
-		assertEquals(new RGBColor(0, 0, 0), w.evaluate(0,  0));
+		assertEquals(new RGBColor(-0.5, -0.5, -0.5), w.evaluate(1.5, 1.5));
+		assertEquals(new RGBColor(0, 0, 0), w.evaluate(-2, -2));
+		assertEquals(new RGBColor(-1, -1, -1), w.evaluate(-1, -1));
+	
 
 		X x = new X();
 		w = new Wrap(x);
 		assertEquals(new RGBColor(-0.5, -0.5, -0.5), w.evaluate(1.5, 1.5));
 		assertEquals(new RGBColor(0, 0, 0), w.evaluate(-2, -2));
+		assertEquals(new RGBColor(-1, -1, -1), w.evaluate(-1, -1));
 	
 
 	}
@@ -264,6 +269,13 @@ public class EvaluatorTests {
 		Addition plus = new Addition(x, x);
 		ImageWrap wrap = new ImageWrap("test.jpg", plus, y);
 		assertEquals(new RGBColor(0, 0, 0), wrap.evaluate(-1, -1));
+	}
+	
+	@Test
+	public void testImageToDomain() {
+		assertEquals(0, Image.domainToImageScale(-1, 600));
+		assertEquals(599, Image.domainToImageScale(1, 600));
+		assertEquals(300, Image.domainToImageScale(0, 600));
 	}
 	
 }
