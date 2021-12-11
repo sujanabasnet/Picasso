@@ -44,7 +44,7 @@ public class Frame extends JFrame {
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
-		commands.add("Save", new Writer()); 
+		commands.add("Save JPG Image", new Writer()); 
 		
 		// add input window and evaluate button 
 		JPanel inputPane = new JPanel();
