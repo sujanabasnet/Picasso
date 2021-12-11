@@ -6,14 +6,15 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
+ * the Ycrcbtorgb function
  * @author sarahmartin
  *
  */
 public class Ycrcbtorgb extends UnaryFunction {
 
 	/**
-	 * @param expr1
-	 * @param expr2
+	 * @param param
+	 * 
 	 */
 	public Ycrcbtorgb(ExpressionTreeNode param) {
 		super(param);
