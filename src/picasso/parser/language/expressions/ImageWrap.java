@@ -36,8 +36,8 @@ public class ImageWrap extends MultipleArgumentFunctions {
 		double newX = MathHelp.wrap(a.getRed());
 		double newY = MathHelp.wrap(b.getRed());
 		Dimension size = image.getSize();
-		int evalX = Image.domainToImageScale(newX, size.width);
-		int evalY = Image.domainToImageScale(newY, size.height);	
+		int evalX = Image.domainToImageScale(newX, size.width-1);
+		int evalY = Image.domainToImageScale(newY, size.height-1);	
 		return new RGBColor(image.getColor(evalX, evalY));
 	}
 

@@ -62,11 +62,8 @@ public class Image {
 	}
 	public static int domainToImageScale(double value, int bounds) {
 		double range = Evaluater.DOMAIN_MAX - Evaluater.DOMAIN_MIN;
-		int val =  (int) (((value - Evaluater.DOMAIN_MIN)/ range) * bounds);
-		if (val >= bounds) {
-			val = bounds -1;
-		}
-		return val;
+		return (int) (((value - Evaluater.DOMAIN_MIN)/ range) * bounds);
+
 	}
 
 }
