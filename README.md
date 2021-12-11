@@ -17,6 +17,10 @@ See the specification for Picasso on the course web site
 
 The `images` directory contains some sample images generated from Picasso.  Some of the expressions for these images can be found in the `expressions` directory.
 
+Within our `expressions` directory we contain the following functions: Absolute Value(Abs), ArcTangent(Atan), Ceil, Clamp, Cos, Exponetial(Exp), Floor, ImageWrap, Log, PerlinBW, PerlinColor, Randomizer, Rgbtoycrcb, Sin, Tan, Wrap, and Ycrcbtorgb
+
+Within our `expressions` directory we contain the following operators: Addition, Division, Exponentiate, Modulo(Mod), Multiplication, and Subtraction.
+
 ### Team Memebers
 Andrew Marsh,
 Jared Cordova,
