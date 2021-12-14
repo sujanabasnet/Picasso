@@ -19,12 +19,14 @@ import picasso.parser.tokens.chars.CharToken;
  * @author sarahmartin
  *
  */
-public class StringAnalyzer implements SemanticAnalyzerInterface {
+public class StringAnalyzer { //implements SemanticAnalyzerInterface{
 
 	static Map<String, ExpressionTreeNode> idToExpression = new HashMap<String, ExpressionTreeNode>();
 	static Map<String, ExpressionTreeNode> charToExpression = new HashMap<String, ExpressionTreeNode>();
 	Random rand;
 	//Array() = new Array(new Addition(t, peek),
+	//error says i need a semantic analyzer, but then i have to extend the interface and use tokens
+	//public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {return null;}
 
 	static {
 		// We always have x and y defined.
@@ -92,11 +94,10 @@ public class StringAnalyzer implements SemanticAnalyzerInterface {
 		
 	}
 
-	@Override
-	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
+	public ExpressionTreeNode generateExpressionTree( String s) {
 		rand = new Random();
-		String s = "abc";
-		ExpressionTreeNode sETN = charToExpression.get(s.charAt(0));
+		//String s = "abc";
+		
 		//I think we need char token facotry,
 		//problem here is that we have madet the 'char to expression' map a string to an expression
 		//not a char to an expression
@@ -105,30 +106,108 @@ public class StringAnalyzer implements SemanticAnalyzerInterface {
 		//StringToken t2;
 		//Token[] binoptokens = {new StarToken() , new SlashToken(), new PlusToken(), new ModToken(), new MinusToken(), new ExponentiateToken()};
 		//ArrayList l = new List(StarToken, SlashToken, PlusToken, ModToken, MinusToken, ExponentiateToken);
-		while (!(tokens.size() == 1) ) {
-			StringToken t = (StringToken) tokens.pop();
+		if (s.length() % 2 == 0) {
+			ExpressionTreeNode total = null;
+			for (int i = 0; i < s.length(); i = i + 2) {
+				
+				String splice = s.substring(i, i + 1);
+				String splice2 = s.substring(i+1, i+2);
+				
+				int randnum = rand.nextInt(7);
+	
+				 
+				if (randnum == 1) {
+					ExpressionTreeNode etm =  new Multiplication(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, etm);
+					}
+				if (randnum == 2) {
+					ExpressionTreeNode etd =  new Division(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, etd);
+					}
+				if (randnum == 3) {
+					ExpressionTreeNode eta =  new Addition(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, eta);
+					}
+				if (randnum == 4) {
+					ExpressionTreeNode etmod =  new Mod(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, etmod);
+					}				
+				
+				if (randnum == 5) {
+					ExpressionTreeNode ets =  new Subtraction(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, ets);
+					}
+				if (randnum == 6) {
+					ExpressionTreeNode ete =  new Exponentiate(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, ete);}
+				
+				
+			}
+			return total;
+		}
+		else {
+			ExpressionTreeNode total = null;
+			for (int i = 0; i < s.length() - 1; i += 2) {
+				
+				String splice = s.substring(i, i + 1);
+				String splice2 = s.substring(i+1, i+2);
+				
+				int randnum = rand.nextInt(7);
+	
+				
+				if (randnum == 1) {
+					ExpressionTreeNode etm =  new Multiplication(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, etm);
+					}
+				if (randnum == 2) {
+					ExpressionTreeNode etd =  new Division(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, etd);
+					}
+				if (randnum == 3) {
+					ExpressionTreeNode eta =  new Addition(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, eta);
+					}
+				if (randnum == 4) {
+					ExpressionTreeNode etmod =  new Mod(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, etmod);
+					}				
+				
+				if (randnum == 5) {
+					ExpressionTreeNode ets =  new Subtraction(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, ets);
+					}
+				if (randnum == 6) {
+					ExpressionTreeNode ete =  new Exponentiate(charToExpression.get(splice), charToExpression.get(splice2));
+					total = new Addition(total, ete);}
+				
+			
+			}
+			String secondtofinalsplice = s.substring(s.length() - 2, s.length() - 1);
+			String finalsplice = s.substring(s.length() - 1, s.length());
+			ExpressionTreeNode finalet =  new Addition(charToExpression.get(secondtofinalsplice), charToExpression.get(finalsplice));
+			total = new Addition(total, finalet);
+			
+			return total;
+		
+			
+		}
+	}
+}
+			//StringToken t = (StringToken) strings.pop();
 			//String id1 = t.getName();
-			StringToken t2 = (StringToken) tokens.pop();
+			//StringToken t2 = (StringToken) strings.pop();
 			//String id2 = t2.getName();
 			
 			
-			int randnum = rand.nextInt(7);
-
-			 
-			if (randnum == 1) {return new Multiplication(charToExpression.get(t), charToExpression.get(t2));}
-			if (randnum == 2) {return new Division(charToExpression.get(t), charToExpression.get(t2));}
-			if (randnum == 3) {return new Addition(charToExpression.get(t), charToExpression.get(t2));}
-			if (randnum == 4) {return new Mod(charToExpression.get(t), charToExpression.get(t2));}				
-			if (randnum == 5) {return new Subtraction(charToExpression.get(t), charToExpression.get(t2));}
-			if (randnum == 6) {return new Exponentiate(charToExpression.get(t), charToExpression.get(t2));}
+			
 
 			//return new Subtraction(t, tokens.pop());
 			
-			ExpressionTreeNode mapped = charToExpression.get(t);
-			if (mapped != null) {
-				return mapped;
-			}
-		}
+			//ExpressionTreeNode mapped = charToExpression.get(s);
+			//if (mapped != null) {
+				//return mapped;
+			
+		
 			
 		
 		
@@ -145,7 +224,5 @@ public class StringAnalyzer implements SemanticAnalyzerInterface {
 
 		// TODO : What should we do if we don't recognize the identifier?
 		// Is that an error? Or, could there a valid reason?
-		return null;
-	}
 
-}
+
