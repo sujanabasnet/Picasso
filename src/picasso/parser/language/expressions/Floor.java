@@ -36,6 +36,17 @@ public class Floor extends UnaryFunction {
 		return new RGBColor(red, green, blue);
 	}
 
+	/**
+	 * Evaluates this expression at the given x,y point by evaluating the floor of
+	 * the function's parameter.
+	 * 
+	 * @return the color from evaluating the floor of the expression's parameter
+	 */
+//	@Override
+//	public RGBColor evaluate(double x, double y, double time) {
+//		return this.evaluate(x, y);//do this in expressionTreeNode
+//		//could multiply x & y by time 
+//	}
 	/*
 	 * (non-Javadoc)
 	 * 
