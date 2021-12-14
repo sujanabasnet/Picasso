@@ -7,25 +7,19 @@ import java.awt.event.ActionListener;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.*;
 import javax.swing.*;
-import java.awt.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import picasso.model.Pixmap;
 import picasso.util.Command;
 import picasso.util.ThreadedCommand;
 import picasso.view.commands.*;
-import javax.swing.UIManager.*;
+
 /**
  * Main container for the Picasso application
  *
  * @author Robert Duvall (rcd@cs.duke.edu)
  * 
  */
-
-
-
-
 
 public class Frame extends JFrame {
 	@SuppressWarnings("unchecked")
@@ -69,15 +63,12 @@ public class Frame extends JFrame {
 		
 		//Saved Variables Tab 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		getContentPane().add(tabbedPane, BorderLayout.NORTH);
-		
-
 		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.addTab("Currently Defined Variables", null, tabbedPane_2, null);
 
 
 		//history window 
-		Border blackline = BorderFactory.createTitledBorder("Pin");
+		Border blackline = BorderFactory.createTitledBorder("Saved");
 		JPanel historyPane = new JPanel();
 		historyPane.setBorder(blackline);
 
@@ -85,12 +76,6 @@ public class Frame extends JFrame {
 		BasicArrowButton upArrow = new BasicArrowButton(BasicArrowButton.NORTH);
 		BasicArrowButton downArrow = new BasicArrowButton(BasicArrowButton.SOUTH);
 		
-		// add commands to test here
-		/*
-		ButtonPanel commands = new ButtonPanel(canvas);
-		commands.add("Open", new Reader());
-		commands.add("Save JPG Image", new Writer());
-		*/ 
 		
 		// add input window and evaluate button 
 		JPanel inputPane = new JPanel();
@@ -141,10 +126,8 @@ public class Frame extends JFrame {
 		});
 
 		
-		
-		//history window + canvas (split pane) 
+		//history window + canvas
 		JSplitPane splitPane = new JSplitPane();
-		getContentPane().add(splitPane, BorderLayout.CENTER);
 		
 		//JScrollBar scrollBar = new JScrollBar();
 		splitPane.setLeftComponent(scrollableList);
@@ -156,14 +139,10 @@ public class Frame extends JFrame {
 		inputPane.add(button);
 		historyPane.add(list);
 		
-		
-		// add our container to Frame and show it
-		//getContentPane().add(canvas, BorderLayout.CENTER);
-		//getContentPane().add(commands, BorderLayout.NORTH);
+		getContentPane().add(tabbedPane, BorderLayout.NORTH);
+		getContentPane().add(splitPane, BorderLayout.CENTER);
 		getContentPane().add(inputPane, BorderLayout.SOUTH);
-		//getContentPane().add(historyPane, BorderLayout.LINE_START);
 		pack();
-
 		
 	}
 
