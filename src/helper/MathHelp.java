@@ -27,5 +27,16 @@ public class MathHelp {
 		}
 		return result;
 	}
+	
+	public static double clamp(double num) {
+		double result = num;
+		if (num > 1) {
+			result = 1;
+		}
+		if (num < -1) {
+			result = -1;
+		}
+		return result;
+	}
 
 }

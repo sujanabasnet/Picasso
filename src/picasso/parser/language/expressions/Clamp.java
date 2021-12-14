@@ -3,6 +3,7 @@
  */
 package picasso.parser.language.expressions;
 
+import helper.MathHelp;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
@@ -33,31 +34,10 @@ public class Clamp extends UnaryFunction {
 	public RGBColor evaluate(double x, double y) {
 		RGBColor result = param.evaluate(x, y);
 		
-		double red = result.getRed();
-		double green = result.getGreen();
-		double blue = result.getBlue();
-		
-		if (result.getRed() > 1) {
-			red = 1;
-		}
-		if (result.getBlue() > 1) {
-			blue = 1;
-		}
-		if (result.getGreen() > 1) {
-			green = 1;
-		}
-		
-		if (result.getRed() < -1) {
-			red = -1;
-		}
-		if (result.getBlue() < -1) {
-			blue = -1;
-		}
-		if (result.getGreen() < -1) {
-			green = -1;
-		}
-		
-		
+		double red = MathHelp.clamp(result.getRed());
+		double green = MathHelp.clamp(result.getGreen());
+		double blue = MathHelp.clamp(result.getBlue());
+	
 		return new RGBColor(red, green, blue);
 	}
 
