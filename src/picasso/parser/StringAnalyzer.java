@@ -1,4 +1,5 @@
 package picasso.parser;
+import picasso.parser.tokens.operations.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +10,8 @@ import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
 import picasso.parser.tokens.StringToken;
 import picasso.parser.tokens.Token;
+import picasso.parser.tokens.operations.SlashToken;
+import picasso.parser.tokens.operations.StarToken;
 
 /**
  * Handle an identifier token 
@@ -66,21 +69,32 @@ public class StringAnalyzer implements SemanticAnalyzerInterface {
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		rand = new Random();
 		StringToken t;
-		//while (!tokens.isEmpty()) {
-		t = (StringToken) tokens.pop();
-		StringToken peek = (StringToken) tokens.peek();
-		//}
+		Token[] binoptokens = {new StarToken() , new SlashToken(), new PlusToken(), new ModToken(), new MinusToken(), new ExponentiateToken()};
+		//ArrayList l = new List(StarToken, SlashToken, PlusToken, ModToken, MinusToken, ExponentiateToken);
+		while (!tokens.isEmpty()) {
+			t = (StringToken) tokens.pop();
+			
+			int randnum = rand.nextInt();
+			tokens.push(binoptokens[randnum]);
+			
+			String id = t.getName();
+			ExpressionTreeNode mapped = charToExpression.get(id);
+			if (mapped != null) {
+				return mapped;
+			}
+			
+		}
 		
-		String id = t.getName();
+		//String id = t.getName();
 		//if (t >= 97 && t <= 122) {
 			//if (tokens.peek() == lowercase) {
 				
 			//}
 		
-		ExpressionTreeNode mapped = charToExpression.get(id);
-		if (mapped != null) {
-			return mapped;
-		}
+		//ExpressionTreeNode mapped = charToExpression.get(id);
+		//if (mapped != null) {
+		//	return mapped;
+		//}
 
 		// TODO : What should we do if we don't recognize the identifier?
 		// Is that an error? Or, could there a valid reason?
