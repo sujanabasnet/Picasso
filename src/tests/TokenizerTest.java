@@ -341,5 +341,16 @@ public class TokenizerTest {
 		assertEquals(new RightParenToken(), tokens.get(9));
 		
 	}
+	
+	@Test
+	public void testStringArguments() {
+		String expression = "strings(\"abc\")";
+		List<Token> tokens = tokenizer.parseTokens(expression);
+		assertEquals(new StringsToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new StringToken("abc"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+		
+	}
 
 }

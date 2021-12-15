@@ -1,4 +1,54 @@
+/**
+ * 
+ */
 package picasso.parser;
+
+import java.util.Stack;
+
+import picasso.parser.language.ExpressionTreeNode;
+import picasso.parser.language.expressions.ImageWrap;
+import picasso.parser.language.expressions.Sin;
+import picasso.parser.language.expressions.Strings;
+import picasso.parser.tokens.StringToken;
+import picasso.parser.tokens.Token;
+
+/**
+ * Handles parsing the sine function.
+ * 
+ * @author sarahmartin
+ *
+ */
+public class StringsAnalyzer extends UnaryFunctionAnalyzer {
+
+	@Override
+	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
+		tokens.pop(); 
+		if (tokens.peek() instanceof StringToken) {
+			StringToken token = (StringToken) tokens.pop();
+			String stringname = token.getName();
+			return new Strings(stringname);
+		}
+		throw new ParseException("Expected a String");
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*package picasso.parser;
 import picasso.parser.tokens.operations.*;
 import picasso.parser.tokens.functions.*;
 
@@ -9,6 +59,7 @@ import java.util.Stack;
 
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
+import picasso.parser.tokens.functions.StringsToken;
 import picasso.parser.tokens.StringToken;
 import picasso.parser.tokens.Token;
 import picasso.parser.tokens.chars.CharToken;
@@ -19,10 +70,11 @@ import picasso.parser.tokens.chars.CharToken;
  * @author sarahmartin
  *
  */
+/*
 public class StringAnalyzer { //implements SemanticAnalyzerInterface{
 
 	static Map<String, ExpressionTreeNode> idToExpression = new HashMap<String, ExpressionTreeNode>();
-	static Map<String, ExpressionTreeNode> charToExpression = new HashMap<String, ExpressionTreeNode>();
+	//static Map<String, ExpressionTreeNode> charToExpression = new HashMap<String, ExpressionTreeNode>();
 	Random rand;
 	//Array() = new Array(new Addition(t, peek),
 	//error says i need a semantic analyzer, but then i have to extend the interface and use tokens
@@ -32,9 +84,20 @@ public class StringAnalyzer { //implements SemanticAnalyzerInterface{
 		// We always have x and y defined.
 		idToExpression.put("x", new X());
 		idToExpression.put("y", new Y());
+	}
+	
+	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
+		while (!(tokens.peek() instanceof StringToken)) {
+			tokens.pop();
+		}
+		StringToken q = tokens.pop(); 
 		
+		return Strings(toString(q));
+	}
+
 		//all characters
 		//lowercase letter
+		/*
 		charToExpression.put("a", new Sin(new X()));
 		charToExpression.put("b", new Cos(new Y()));
 		charToExpression.put("c", new Tan(new X()));
@@ -61,6 +124,7 @@ public class StringAnalyzer { //implements SemanticAnalyzerInterface{
 		charToExpression.put("x", new Mod(new Cos(new X()), new Y()));
 		charToExpression.put("y", new PerlinColor(new Division(new X(), new Y()), new X()));
 		charToExpression.put("z", new Abs(new Multiplication(new Y(), new X())));
+		
 		//uppercase letters
 		charToExpression.put("A", new Sin(new Y()));
 		charToExpression.put("B", new Cos(new X()));
@@ -89,12 +153,12 @@ public class StringAnalyzer { //implements SemanticAnalyzerInterface{
 		charToExpression.put("Y", new PerlinColor(new Multiplication(new X(), new Y()), new Y()));
 		charToExpression.put("Z", new Log(new Division(new Y(), new X())));
 		
-		
-		
+		*/
+		/*
 		
 	}
 
-	public ExpressionTreeNode generateExpressionTree( String s) {
+	public ExpressionTreeNode generateExpressionTree( String s) {/*
 		rand = new Random();
 		//String s = "abc";
 		
@@ -191,8 +255,8 @@ public class StringAnalyzer { //implements SemanticAnalyzerInterface{
 		
 			
 		}
-	}
-}
+	}*/
+
 			//StringToken t = (StringToken) strings.pop();
 			//String id1 = t.getName();
 			//StringToken t2 = (StringToken) strings.pop();
