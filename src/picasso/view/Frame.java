@@ -139,6 +139,24 @@ public class Frame extends JFrame {
 		    	  canvas.refresh();
 		      }
 		});
+		
+		JButton button3 = new JButton("Evaluate in a new window");
+		button3.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent e) {
+		    	  JFrame newFrame = new JFrame();
+		    	  JPanel newPanel = new JPanel();
+		    	  evaluater.setExpression(textField.getText());
+		    	  action.execute(canvas.getPixmap());
+		    	  canvas.refresh();
+		    	  newPanel.add(canvas);
+		    	  newFrame.getContentPane().add(newPanel);
+		    	  newFrame.pack();
+		    	  newFrame.setVisible(true);
+		    	  
+		    	  
+		      }
+		});
+		
 
 		
 		
@@ -154,6 +172,7 @@ public class Frame extends JFrame {
 		inputPane.add(textField);
 		inputPane.add(button2);
 		inputPane.add(button);
+		inputPane.add(button3);
 		historyPane.add(list);
 		
 		
