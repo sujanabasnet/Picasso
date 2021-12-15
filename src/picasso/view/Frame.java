@@ -1,5 +1,6 @@
 package picasso.view;
 import java.util.ArrayList;
+import java.util.Random;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,8 @@ import javax.swing.event.*;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.plaf.basic.BasicArrowButton;
+
+import picasso.Main;
 import picasso.model.Pixmap;
 import picasso.util.Command;
 import picasso.util.ThreadedCommand;
@@ -154,14 +157,16 @@ public class Frame extends JFrame {
 		    	  JFrame newFrame = new JFrame();
 		    	  newFrame.setPreferredSize(size);
 		    	  Canvas newCanvas = new Canvas(newFrame);
-		    	  //newCanvas.setSize(new Dimension(600, 600));
+		    	  newFrame.setTitle(textField.getText());
+		    	  newCanvas.getPixmap().setSize(size);
 		    	  Command<Pixmap> action2 = new ThreadedCommand<Pixmap>(newCanvas, evaluater);
 		    	  evaluater.setExpression(textField.getText());
 		    	  action2.execute(newCanvas.getPixmap());
-		    	  newCanvas.refresh();
+		    	  //newCanvas.refresh();
 		    	  newFrame.getContentPane().add(newCanvas);
 		    	  newFrame.pack();
 		    	  newFrame.setVisible(true);
+		    	  newFrame.setLocation(800, 0);
 		    	 
 		      }
 		});
