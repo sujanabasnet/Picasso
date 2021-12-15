@@ -27,3 +27,8 @@ Jared Cordova,
 Praise Apata,
 Sarah Martin,
 Sujana Basnet
+
+
+## Extensions
+
+1. View multiple images at once in separate windows - Users can view the image in a different window by clicking on "Evaluate in a new window" button. 
