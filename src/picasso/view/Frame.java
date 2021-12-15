@@ -28,7 +28,7 @@ import javax.swing.UIManager.*;
 
 
 public class Frame extends JFrame {
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 
 	
 	public Frame(Dimension size) {
@@ -128,6 +128,14 @@ public class Frame extends JFrame {
 		    	  scrollableList.setViewportView(list);
 		      }
 		});
+		
+		//history window + canvas (split pane) 
+		JSplitPane splitPane = new JSplitPane();
+		getContentPane().add(splitPane, BorderLayout.CENTER);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		splitPane.setLeftComponent(scrollableList);
+		splitPane.setRightComponent(canvas);
 
 		JButton button = new JButton("Evaluate");
 		Evaluater evaluater = new Evaluater();
@@ -144,29 +152,24 @@ public class Frame extends JFrame {
 		button3.addActionListener(new ActionListener() {
 		      public void actionPerformed(ActionEvent e) {
 		    	  JFrame newFrame = new JFrame();
-		    	  JPanel newPanel = new JPanel();
+		    	  newFrame.setPreferredSize(size);
+		    	  Canvas newCanvas = new Canvas(newFrame);
+		    	  //newCanvas.setSize(new Dimension(600, 600));
+		    	  Command<Pixmap> action2 = new ThreadedCommand<Pixmap>(newCanvas, evaluater);
 		    	  evaluater.setExpression(textField.getText());
-		    	  action.execute(canvas.getPixmap());
-		    	  canvas.refresh();
-		    	  newPanel.add(canvas);
-		    	  newFrame.getContentPane().add(newPanel);
+		    	  action2.execute(newCanvas.getPixmap());
+		    	  newCanvas.refresh();
+		    	  newFrame.getContentPane().add(newCanvas);
 		    	  newFrame.pack();
 		    	  newFrame.setVisible(true);
-		    	  
-		    	  
+		    	 
 		      }
 		});
 		
 
 		
 		
-		//history window + canvas (split pane) 
-		JSplitPane splitPane = new JSplitPane();
-		getContentPane().add(splitPane, BorderLayout.CENTER);
-		
-		//JScrollBar scrollBar = new JScrollBar();
-		splitPane.setLeftComponent(scrollableList);
-		splitPane.setRightComponent(canvas);
+
 		
 		inputPane.add(label);
 		inputPane.add(textField);
@@ -185,5 +188,7 @@ public class Frame extends JFrame {
 
 		
 	}
+  	  
+
 
 }

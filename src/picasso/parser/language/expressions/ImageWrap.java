@@ -8,10 +8,13 @@ import java.awt.Dimension;
 import helper.Image;
 import helper.MathHelp;
 import picasso.model.Pixmap;
+import picasso.parser.ParseException;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.view.commands.Evaluater;
 
 /**
+ *
+ * Represents the ImageWrap function.
  * @author sujanabasnet
  *
  */
@@ -35,7 +38,12 @@ public class ImageWrap extends MultipleArgumentFunctions {
 		RGBColor b = expr2.evaluate(x, y);
 		double newX = MathHelp.wrap(a.getRed());
 		double newY = MathHelp.wrap(b.getRed());
-		Dimension size = image.getSize();
+		Dimension size;
+		try {
+			size = image.getSize();
+		} catch (NullPointerException e) {
+			throw new ParseException("Image not found!");
+		}
 		int evalX = Image.domainToImageScale(newX, size.width-1);
 		int evalY = Image.domainToImageScale(newY, size.height-1);	
 		return new RGBColor(image.getColor(evalX, evalY));

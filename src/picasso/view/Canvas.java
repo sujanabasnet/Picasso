@@ -70,4 +70,5 @@ public class Canvas extends JPanel {
 		setMinimumSize(size);
 		super.setSize(size);
 	}
+
 }

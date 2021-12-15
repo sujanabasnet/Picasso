@@ -24,6 +24,9 @@ public class ImageWrapAnalyzer implements SemanticAnalyzerInterface {
 		ExpressionTreeNode expr2 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		ExpressionTreeNode expr1 = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		
+		if ((tokens.isEmpty()) || !(tokens.peek() instanceof StringToken)) {
+			throw new ParseException("Expected an image name!");
+		}
 		StringToken token = (StringToken) tokens.pop();
 		String fileName = token.getName();
 		
