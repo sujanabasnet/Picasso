@@ -2,7 +2,11 @@ package picasso.parser.language.expressions;
 
 import picasso.model.ImprovedNoise;
 import picasso.parser.language.ExpressionTreeNode;
-
+/**
+ * Represents the PerlinBW function.
+ * @author andrewmarsh
+ *
+ */
 public class PerlinBW extends MultipleArgumentFunctions {
 
 	public PerlinBW(ExpressionTreeNode expr1, ExpressionTreeNode expr2) {
