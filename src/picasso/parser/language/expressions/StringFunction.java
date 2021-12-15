@@ -10,6 +10,7 @@ import java.util.Random;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
+ * Parent class for the Strings function.
  * @author sarahmartin
  *
  */

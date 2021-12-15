@@ -13,7 +13,7 @@ import picasso.parser.tokens.StringToken;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing the sine function.
+ * Handles parsing the Strings function.
  * 
  * @author sarahmartin
  *
