@@ -1,18 +1,30 @@
 package picasso.view;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import picasso.parser.IdentifierAnalyzer;
+import picasso.parser.language.ExpressionTreeNode;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.*;
+import java.util.*;
+import java.awt.*;
 import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.table.DefaultTableModel;
+
 import picasso.model.Pixmap;
 import picasso.util.Command;
 import picasso.util.ThreadedCommand;
 import picasso.view.commands.*;
+import picasso.view.equalsDisplay; 
 
 /**
  * Main container for the Picasso application
@@ -22,17 +34,18 @@ import picasso.view.commands.*;
  */
 
 public class Frame extends JFrame {
+	
+
 	@SuppressWarnings("unchecked")
 
-	
+
 	public Frame(Dimension size) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
 
 		// create GUI components
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
-
 		
 		//Image interaction menu 
 		JMenuBar menuBar = new JMenuBar();
@@ -61,12 +74,7 @@ public class Frame extends JFrame {
 			  }
 			});
 		
-		//Saved Variables Tab 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("Currently Defined Variables", null, tabbedPane_2, null);
-
-
+		
 		//history window 
 		Border blackline = BorderFactory.createTitledBorder("Saved");
 		JPanel historyPane = new JPanel();
@@ -114,16 +122,23 @@ public class Frame extends JFrame {
 		      }
 		});
 
-		JButton button = new JButton("Evaluate");
-		Evaluater evaluater = new Evaluater();
-		Command<Pixmap> action = new ThreadedCommand<Pixmap>(canvas, evaluater);
-		button.addActionListener(new ActionListener() {
-		      public void actionPerformed(ActionEvent e) {
-		    	  evaluater.setExpression(textField.getText());
-		    	  action.execute(canvas.getPixmap());
-		    	  canvas.refresh();
-		      }
-		});
+		
+
+		ArrayList<ExpressionTreeNode> expr = new ArrayList<ExpressionTreeNode>();
+		
+		//Object[] ar = exMap.entrySet().toArray();
+	
+		//Object[] objects = name.toArray();
+		//System.out.println(Arrays.toString(objects));
+		
+		//DefaultTableModel model = new DefaultTableModel(objects, 1);
+		//JTable table = new JTable( model ); 
+		
+		//customComponent
+		JLabel assignName = new JLabel("Assignment Name");
+		ImageIcon imageThumb = new ImageIcon("images/foo.jpg");
+		
+
 
 		
 		//history window + canvas
@@ -133,6 +148,106 @@ public class Frame extends JFrame {
 		splitPane.setLeftComponent(scrollableList);
 		splitPane.setRightComponent(canvas);
 		
+		
+		
+		//add image+expression bar
+		Map<String, ExpressionTreeNode> exMap = IdentifierAnalyzer.getIdToExpression(); 
+		ArrayList<String> name = new ArrayList<String>();
+		for (Map.Entry<String, ExpressionTreeNode> set :
+            exMap.entrySet()) {
+
+           // Printing all elements of a Map
+           name.add(set.getKey());}
+
+		Object[] objects = name.toArray();
+		DefaultListModel refreshableList = new DefaultListModel<String>(); 
+		for (String key: exMap.keySet()) {
+			refreshableList.addElement(key);
+		}
+	
+		//DefaultListModel dlm = new DefaultListModel();
+		
+		JList objList = new JList(refreshableList);
+		//JScrollPane scrollPane2 = new JScrollPane(objList);
+		JPanel scrollFrameHolder = new JPanel(); 
+		
+		JList lista = new JList(refreshableList);
+		lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		lista.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		lista.setVisibleRowCount(4);
+
+
+		//scrollFrameHolder.add(scrollPane2);
+		scrollFrameHolder.add(lista);
+		scrollFrameHolder.setLayout(new FlowLayout());
+		
+		/*
+		for (Object item: objects) {
+			dlm.addElement(item);
+		}*/
+		
+		//System.out.println(objects.toString());
+		
+		JButton button = new JButton("Evaluate");
+		Evaluater evaluater = new Evaluater();
+		Command<Pixmap> action = new ThreadedCommand<Pixmap>(canvas, evaluater);
+		button.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent e) {
+		    	  evaluater.setExpression(textField.getText());
+		    	  action.execute(canvas.getPixmap());
+		    	  canvas.refresh();
+		    	  System.out.println(exMap.toString());
+		    	  //objects = name.toArray();
+		    	  for (String key: exMap.keySet()) {
+		  				refreshableList.addElement(key);
+		  			}
+		    	  lista.ensureIndexIsVisible(refreshableList.getSize());
+		    	  System.out.println(lista.getModel().getElementAt(2));
+		    	  scrollFrameHolder.add(lista);
+
+
+		    	  
+		    	  /*
+		    	  Map<String, ExpressionTreeNode> exMap = IdentifierAnalyzer.getIdToExpression(); 
+		    	  ArrayList<String> name = new ArrayList<String>();
+		    	  for (Map.Entry<String, ExpressionTreeNode> set :
+		            exMap.entrySet()) {
+
+		           // Printing all elements of a Map
+		           name.add(set.getKey());
+		    	  }
+		           Object[] objects = name.toArray();
+		    	  
+		    	  DefaultTableModel model = new DefaultTableModel(objects, 1);
+		    	  JTable table = new JTable( model ); 
+		    	  */
+		      
+		}});
+		
+		
+		ArrayList<Object> result = new ArrayList<Object>();
+		
+		for (int i=0; i < objects.length; i++) {
+			Evaluater evaluater1 = new Evaluater();
+			Command<Pixmap> action1 = new ThreadedCommand<Pixmap>(canvas, evaluater1);
+			evaluater1.setExpression(objects[i].toString());
+			action1.execute(canvas.getPixmap());
+			new AutoSaveImage().execute(canvas.getPixmap(),objects[i].toString());
+			
+			
+			//assignWithImage lista = new assignWithImage(objects[i].toString(), objects[i].toString()+".jpg" );
+			//result.add(lista);
+	
+		}
+
+		
+		//Saved Variables Tab 
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
+				
+		tabbedPane.addTab("Currently Defined Variables", null, scrollFrameHolder, "Display the defined variable names and their values");
+
+
 		inputPane.add(label);
 		inputPane.add(textField);
 		inputPane.add(button2);
@@ -144,6 +259,8 @@ public class Frame extends JFrame {
 		getContentPane().add(inputPane, BorderLayout.SOUTH);
 		pack();
 		
+
+		}
+		
 	}
 
-}
