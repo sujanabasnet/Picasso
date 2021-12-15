@@ -292,5 +292,11 @@ public class EvaluatorTests {
 		assertEquals(300, Image.domainToImageScale(0, 600));
 	}
 	
+	/*
+	@Test
+	public void testStringsEvaluation() {
+		String 
+	}*/
+	
 }
 
