@@ -2,8 +2,6 @@ package picasso.parser;
 
 import java.util.Stack;
 
-
-
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
@@ -18,7 +16,7 @@ public class EqualsAnalyzer implements SemanticAnalyzerInterface {
 
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
-		tokens.pop(); 
+		tokens.pop();
 		ExpressionTreeNode expr = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		System.out.println(tokens);
 		if (!tokens.isEmpty()) {
@@ -30,8 +28,8 @@ public class EqualsAnalyzer implements SemanticAnalyzerInterface {
 					return expr;
 				}
 				throw new ParseException("Variable name cannot be x or y.");
-					
-				}
+
+			}
 			throw new ParseException("Variable name cannot be a number, color, or function.");
 		}
 		throw new ParseException("Expected a variable name.");
