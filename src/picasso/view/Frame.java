@@ -1,15 +1,8 @@
 package picasso.view;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import picasso.parser.IdentifierAnalyzer;
 import picasso.parser.TraversingException;
-import picasso.parser.language.ExpressionTreeNode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -17,7 +10,6 @@ import javax.swing.border.Border;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.*;
-import java.awt.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicButtonListener;
 import picasso.model.Pixmap;
@@ -127,9 +119,6 @@ public class Frame extends JFrame {
 	
 		
 		//history window + canvas
-		//JSplitPane splitPane = new JSplitPane();
-		
-		//JScrollBar scrollBar = new JScrollBar();
 		splitPane.setLeftComponent(scrollableList);
 		splitPane.setRightComponent(canvas);
 		
@@ -149,7 +138,6 @@ public class Frame extends JFrame {
 		    	  evaluater.setExpression(textField.getText());
 		    	  action.execute(canvas.getPixmap());
 		    	  history.add(textField.getText());
-		    	  JList historyList = new JList(history.toArray());
 		    	  canvas.refresh(); 
 		}});
 		
@@ -211,7 +199,6 @@ public class Frame extends JFrame {
 		});
 		
 
-	
 		inputPane.add(upArrow);
 		inputPane.add(downArrow);
 		inputPane.add(label);
