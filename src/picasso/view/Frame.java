@@ -124,24 +124,7 @@ public class Frame extends JFrame {
 		splitPane.setLeftComponent(scrollableList);
 		splitPane.setRightComponent(canvas);
 
-		
-
-		ArrayList<ExpressionTreeNode> expr = new ArrayList<ExpressionTreeNode>();
-		
-		//Object[] ar = exMap.entrySet().toArray();
 	
-		//Object[] objects = name.toArray();
-		//System.out.println(Arrays.toString(objects));
-		
-		//DefaultTableModel model = new DefaultTableModel(objects, 1);
-		//JTable table = new JTable( model ); 
-		
-		//customComponent
-		JLabel assignName = new JLabel("Assignment Name");
-		ImageIcon imageThumb = new ImageIcon("images/foo.jpg");
-		
-
-
 		
 		//history window + canvas
 		//JSplitPane splitPane = new JSplitPane();
@@ -150,48 +133,10 @@ public class Frame extends JFrame {
 		splitPane.setLeftComponent(scrollableList);
 		splitPane.setRightComponent(canvas);
 		
-		
-		
-		//add image+expression bar
-		Map<String, ExpressionTreeNode> exMap = IdentifierAnalyzer.getIdToExpression(); 
-		ArrayList<String> name = new ArrayList<String>();
-		for (Map.Entry<String, ExpressionTreeNode> set :
-            exMap.entrySet()) {
-
-           // Printing all elements of a Map
-           name.add(set.getKey());}
-
-		Object[] objects = name.toArray();
-		DefaultListModel refreshableList = new DefaultListModel<String>(); 
-		for (String key: exMap.keySet()) {
-			refreshableList.addElement(key);
-		}
-	
-		//DefaultListModel dlm = new DefaultListModel();
-		
-		JList objList = new JList(refreshableList);
-		//JScrollPane scrollPane2 = new JScrollPane(objList);
-		JPanel scrollFrameHolder = new JPanel(); 
-		
-		JList lista = new JList(refreshableList);
-		lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		lista.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		lista.setVisibleRowCount(4);
-
-
-		//scrollFrameHolder.add(scrollPane2);
-		scrollFrameHolder.add(lista);
-		scrollFrameHolder.setLayout(new FlowLayout());
-		
+		//history
 		
 		ArrayList<String> history =  new ArrayList<String>();
-		
-		/*
-		for (Object item: objects) {
-			dlm.addElement(item);
-		}*/
-		
-		//System.out.println(objects.toString());
+	
 		
 		JList historyList = new JList(history.toArray());
 		historyList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -205,36 +150,7 @@ public class Frame extends JFrame {
 		    	  action.execute(canvas.getPixmap());
 		    	  history.add(textField.getText());
 		    	  JList historyList = new JList(history.toArray());
-		    	  canvas.refresh();
-
-		    	  /*
-		    	  System.out.println(exMap.toString());
-		    	  //objects = name.toArray();
-		    	  System.out.println(history.toString());
-		    	  for (String key: exMap.keySet()) {
-		  				refreshableList.addElement(key);
-		  			}
-		    	  lista.ensureIndexIsVisible(refreshableList.getSize());
-		    	  System.out.println(lista.getModel().getElementAt(2));
-		    	  scrollFrameHolder.add(lista);
-
-
-		    	  
-		    	
-		    	  Map<String, ExpressionTreeNode> exMap = IdentifierAnalyzer.getIdToExpression(); 
-		    	  ArrayList<String> name = new ArrayList<String>();
-		    	  for (Map.Entry<String, ExpressionTreeNode> set :
-		            exMap.entrySet()) {
-
-		           // Printing all elements of a Map
-		           name.add(set.getKey());
-		    	  }
-		           Object[] objects = name.toArray();
-		    	  
-		    	  DefaultTableModel model = new DefaultTableModel(objects, 1);
-		    	  JTable table = new JTable( model ); 
-		    	  */
-		      
+		    	  canvas.refresh(); 
 		}});
 		
 		//arrows 
@@ -250,7 +166,7 @@ public class Frame extends JFrame {
 		      }
 		    	  else {
 		    		  position =0;
-		  			throw new TraversingException("End of Up Arrow History.");
+		  			throw new TraversingException("End of History.");
 
 	
 		    	}
@@ -267,7 +183,7 @@ public class Frame extends JFrame {
 		      }
 		    	  else {
 		    		spot = history.size();
-		  			throw new TraversingException("End of Down Arrow History.");
+		  			throw new TraversingException("End of History.");
 		    	}
 		    	  
 			}
@@ -296,12 +212,6 @@ public class Frame extends JFrame {
 		
 
 	
-		//Saved Variables Tab 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-				
-		tabbedPane.addTab("Currently Defined Variables", null, scrollFrameHolder, "Display the defined variable names and their values");
-
 		inputPane.add(upArrow);
 		inputPane.add(downArrow);
 		inputPane.add(label);
@@ -311,7 +221,6 @@ public class Frame extends JFrame {
 		inputPane.add(button3);
 		historyPane.add(list);
 		
-		getContentPane().add(tabbedPane, BorderLayout.NORTH);
 		getContentPane().add(splitPane, BorderLayout.CENTER);
 		getContentPane().add(inputPane, BorderLayout.SOUTH);
 		pack();
