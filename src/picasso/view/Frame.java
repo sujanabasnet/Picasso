@@ -1,15 +1,8 @@
 package picasso.view;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import picasso.parser.IdentifierAnalyzer;
 import picasso.parser.TraversingException;
-import picasso.parser.language.ExpressionTreeNode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -17,7 +10,6 @@ import javax.swing.border.Border;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.*;
-import java.awt.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicButtonListener;
 import picasso.model.Pixmap;
@@ -33,6 +25,7 @@ import picasso.view.commands.*;
  * 
  */
 
+@SuppressWarnings("serial")
 public class Frame extends JFrame {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -81,7 +74,7 @@ public class Frame extends JFrame {
 		
 		// add input window and evaluate button 
 		JPanel inputPane = new JPanel();
-		JLabel label = new JLabel("Enter Expression");
+		JLabel label = new JLabel("Expression:");
 		JTextField textField = new JTextField();
 		textField.setColumns(15);
 		
@@ -120,7 +113,6 @@ public class Frame extends JFrame {
 		JSplitPane splitPane = new JSplitPane();
 		getContentPane().add(splitPane, BorderLayout.CENTER);
 		
-		JScrollBar scrollBar = new JScrollBar();
 		splitPane.setLeftComponent(scrollableList);
 		splitPane.setRightComponent(canvas);
 
@@ -148,14 +140,11 @@ public class Frame extends JFrame {
 		      public void actionPerformed(ActionEvent e) {
 		    	  String input = textField.getText();
 		    	  if (input.isEmpty()) {
-		    		  evaluater.setExpression(RandomExpressionGenerator.getRandomExpression(0, input));
+		    		 input = RandomExpressionGenerator.getRandomExpression(0, input);
 		    	  }
-		    	  else {
-		    		  evaluater.setExpression(input);
-		    	  }
+		    	  evaluater.setExpression(input);
 		    	  action.execute(canvas.getPixmap());
-		    	  history.add(textField.getText());
-		    	  JList historyList = new JList(history.toArray());
+		    	  history.add(input);
 		    	  canvas.refresh(); 
 		}});
 		
@@ -163,35 +152,34 @@ public class Frame extends JFrame {
 
 		BasicArrowButton upArrow = new BasicArrowButton(BasicArrowButton.NORTH);
 		upArrow.addMouseListener(new BasicButtonListener(upArrow) {
-			int position =0;
+			int position =  -2;
 			public void mousePressed(MouseEvent e) {
-		    	  
-		    	  if (position < history.size()-1) {
-			      textField.setText(history.get(position).toString());
-		    	  position+=1;
-		      }
-		    	  else {
-		    		  position =0;
-		  			throw new TraversingException("End of History.");
-
-	
-		    	}
+				if (position == -2) {
+					position = history.size() - 1;
+				}
+				if (position < 0) {
+					position = history.size() - 1;
+					throw new TraversingException("End of History.");
+				}
+				else {
+					textField.setText(history.get(position).toString());
+					position -= 1;
+				}
 			}
 		});
 		BasicArrowButton downArrow = new BasicArrowButton(BasicArrowButton.SOUTH);
 		downArrow.addMouseListener(new BasicButtonListener(downArrow) {
-			int spot = history.size();
+			int spot = 0;
 			public void mousePressed(MouseEvent e) {
-		    	  
-		    	  if (spot >= 0) {
-			      textField.setText(history.get(spot).toString());
-		    	  spot-=1;
-		      }
-		    	  else {
-		    		spot = history.size();
-		  			throw new TraversingException("End of History.");
-		    	}
-		    	  
+				if (spot < history.size()) {
+					textField.setText(history.get(spot).toString());
+					spot += 1;
+				}
+				else {
+					spot = 0;
+					throw new TraversingException("End of History.");
+				}
+
 			}
 		});
 		
@@ -206,12 +194,11 @@ public class Frame extends JFrame {
 		    	  Command<Pixmap> action2 = new ThreadedCommand<Pixmap>(newCanvas, evaluater);
 		    	  String input = textField.getText();
 		    	  if (input.isEmpty()) {
-		    		  evaluater.setExpression(RandomExpressionGenerator.getRandomExpression(0, input));
-		    	  }
-		    	  else {
-		    		  evaluater.setExpression(input);
-		    		  newFrame.setTitle(input);
-		    	  }
+			    		 input = RandomExpressionGenerator.getRandomExpression(0, input);
+			    	  }
+		    	  evaluater.setExpression(input);
+		    	  newFrame.setTitle(input);
+		   
 		    	  action2.execute(newCanvas.getPixmap());
 		    	  //newCanvas.refresh();
 		    	  newFrame.getContentPane().add(newCanvas);
@@ -222,12 +209,26 @@ public class Frame extends JFrame {
 		      }
 		});
 		
+		JButton button4 = new JButton("Clear");
+		button4.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent e) {
+		    	  textField.setText("");
+		      }
+		});
+		
+		// make the textfield scrollable for longer expressions
+		
+		JScrollPane scroll = new JScrollPane();
+		scroll.setViewportView(textField);
+		scroll.setPreferredSize(new Dimension(150,50));
+
 
 	
 		inputPane.add(upArrow);
 		inputPane.add(downArrow);
 		inputPane.add(label);
-		inputPane.add(textField);
+		inputPane.add(scroll);
+		inputPane.add(button4);
 		inputPane.add(button2);
 		inputPane.add(button);
 		inputPane.add(button3);
