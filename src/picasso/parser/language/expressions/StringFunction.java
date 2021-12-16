@@ -27,21 +27,21 @@ public abstract class StringFunction extends ExpressionTreeNode{
 		charToExpression.put("e", new Abs(new Addition(new X(), new Y())));
 		charToExpression.put("f", new Ceil(new Mod(new Y(), new X())));
 		charToExpression.put("g", new Floor(new Subtraction(new Y(), new X())));
-		charToExpression.put("h", new Rgbtoycrcb(new Mod(new Y(), new X())));
+		charToExpression.put("h", new RGBToYCrCb(new Mod(new Y(), new X())));
 		charToExpression.put("i", new Mod(new Addition(new X(), new Y()), new X()));
-		charToExpression.put("j", new Ycrcbtorgb(new Mod(new Y(), new X())));
-		charToExpression.put("k", new Rgbtoycrcb(new Subtraction(new Y(), new X())));
+		charToExpression.put("j", new YCrCbToRGB(new Mod(new Y(), new X())));
+		charToExpression.put("k", new RGBToYCrCb(new Subtraction(new Y(), new X())));
 		charToExpression.put("l", new Exp(new Multiplication(new X(), new Y())));
 		charToExpression.put("m", new Cos(new Addition(new X(), new Y())));
 		charToExpression.put("n", new Atan(new Mod(new Y(), new X())));
 		charToExpression.put("o", new Subtraction(new Subtraction(new Y(), new X()), new Y()));
-		charToExpression.put("p", new Mod(new X(), new Exp(new Ycrcbtorgb( new Y()))));
+		charToExpression.put("p", new Mod(new X(), new Exp(new YCrCbToRGB( new Y()))));
 		charToExpression.put("q", new Mod(new Addition(new X(), new Y()), new X()));
 		charToExpression.put("r", new Exp(new Mod(new Y(), new X())));
-		charToExpression.put("s", new Rgbtoycrcb(new Division(new X(), new Y())));
+		charToExpression.put("s", new RGBToYCrCb(new Division(new X(), new Y())));
 		charToExpression.put("t", new Exp(new Multiplication(new Y(), new X())));
 		charToExpression.put("u", new Multiplication(new Mod(new Y(), new X()), new Sin(new X())));
-		charToExpression.put("v", new Sin(new Rgbtoycrcb(new X())));
+		charToExpression.put("v", new Sin(new RGBToYCrCb(new X())));
 		charToExpression.put("w", new Division(new Addition(new X(), new Y()), new X()));
 		charToExpression.put("x", new Mod(new Cos(new X()), new Y()));
 		charToExpression.put("y", new PerlinColor(new Division(new X(), new Y()), new X()));
@@ -55,21 +55,21 @@ public abstract class StringFunction extends ExpressionTreeNode{
 		charToExpression.put("E", new Abs(new Subtraction(new X(), new Y())));
 		charToExpression.put("F", new Ceil(new Multiplication(new Y(), new X())));
 		charToExpression.put("G", new Floor(new Addition(new Y(), new X())));
-		charToExpression.put("H", new Rgbtoycrcb(new Mod(new Y(), new X())));
+		charToExpression.put("H", new RGBToYCrCb(new Mod(new Y(), new X())));
 		charToExpression.put("I", new PerlinBW(new Addition(new X(), new Y()), new Y()));
-		charToExpression.put("J", new Ycrcbtorgb(new Addition(new Y(), new X())));
-		charToExpression.put("K", new Rgbtoycrcb(new Mod(new Y(), new X())));
+		charToExpression.put("J", new YCrCbToRGB(new Addition(new Y(), new X())));
+		charToExpression.put("K", new RGBToYCrCb(new Mod(new Y(), new X())));
 		charToExpression.put("L", new Exp(new Division(new X(), new Y())));
 		charToExpression.put("M", new Cos(new PerlinColor(new X(), new Y())));
 		charToExpression.put("N", new Atan(new Subtraction(new Floor(new Y()), new X())));
 		charToExpression.put("O", new Addition(new Subtraction(new Y(), new X()), new PerlinColor(new X(), new Ceil(new Y()))));
-		charToExpression.put("P", new Multiplication(new Mod(new X(), new Y()), new Ycrcbtorgb( new X())));
+		charToExpression.put("P", new Multiplication(new Mod(new X(), new Y()), new YCrCbToRGB( new X())));
 		charToExpression.put("Q", new Division(new Addition(new X(), new Y()), new Y()));
-		charToExpression.put("R", new Exp(new Mod(new Y(), new Ycrcbtorgb(new X()))));
-		charToExpression.put("S", new Rgbtoycrcb(new Multiplication(new X(), new Floor(new Y()))));
+		charToExpression.put("R", new Exp(new Mod(new Y(), new YCrCbToRGB(new X()))));
+		charToExpression.put("S", new RGBToYCrCb(new Multiplication(new X(), new Floor(new Y()))));
 		charToExpression.put("T", new Exp(new Division(new Y(), new X())));
 		charToExpression.put("U", new Division(new Mod(new Y(), new X()), new Atan(new Y())));
-		charToExpression.put("V", new Cos(new Rgbtoycrcb(new Y())));
+		charToExpression.put("V", new Cos(new RGBToYCrCb(new Y())));
 		charToExpression.put("W", new Multiplication(new Subtraction(new X(), new Y()), new Y()));
 		charToExpression.put("X", new Division(new Sin(new X()), new Y()));
 		charToExpression.put("Y", new PerlinColor(new Multiplication(new X(), new Y()), new Y()));
@@ -113,6 +113,7 @@ public abstract class StringFunction extends ExpressionTreeNode{
 		
 		
 		//numbers
+		charToExpression.put("0", new RGBToYCrCb(new Addition(new X(), new RGBColor(.1,.2,.3))));
 		charToExpression.put("1", new Addition(new RGBColor(.1,.2,.3), new X()));
 		charToExpression.put("2", new Addition(new RGBColor(-.4,.5,.6), new Y()));
 		charToExpression.put("3", new Addition(new RGBColor(.7,-.8,.9), new X()));

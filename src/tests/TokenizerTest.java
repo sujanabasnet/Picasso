@@ -144,16 +144,16 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("x"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
 		
-		expression = "ycrcbtorgb(x)";
+		expression = "yCrCbToRGB(x)";
 		tokens = tokenizer.parseTokens(expression);
-		assertEquals(new YcrcbtorgbToken(), tokens.get(0));
+		assertEquals(new YCrCbToRGBToken(), tokens.get(0));
 		assertEquals(new LeftParenToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("x"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
 		
-		expression = "rgbtoycrcb(x)";
+		expression = "RGBToYCrCb(x)";
 		tokens = tokenizer.parseTokens(expression);
-		assertEquals(new RgbtoycrcbToken(), tokens.get(0));
+		assertEquals(new RGBToYCrCbToken(), tokens.get(0));
 		assertEquals(new LeftParenToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("x"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));

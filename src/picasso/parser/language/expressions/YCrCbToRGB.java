@@ -10,13 +10,13 @@ import picasso.parser.language.ExpressionTreeNode;
  * @author sarahmartin
  *
  */
-public class Ycrcbtorgb extends UnaryFunction {
+public class YCrCbToRGB extends UnaryFunction {
 
 	/**
 	 * @param param
 	 * 
 	 */
-	public Ycrcbtorgb(ExpressionTreeNode param) {
+	public YCrCbToRGB(ExpressionTreeNode param) {
 		super(param);
 	}
 
