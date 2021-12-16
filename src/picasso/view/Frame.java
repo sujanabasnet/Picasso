@@ -7,6 +7,8 @@ import java.util.Map;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import picasso.parser.IdentifierAnalyzer;
+import picasso.parser.ParseException;
+import picasso.parser.TraversingException;
 import picasso.parser.language.ExpressionTreeNode;
 
 import java.awt.event.ActionEvent;
@@ -242,13 +244,29 @@ public class Frame extends JFrame {
 			int position =0;
 			public void mousePressed(MouseEvent e) {
 		    	  textField.setText(history.get(position).toString());
-		    	  position+=1; 
-
+		    	  
+		    	  if (position < history.size()-1) {
+		    	  position+=1;
 		      }
-
-
+		    	  else {
+		  			throw new TraversingException("End of Up Arrow History ");
+		    	}
+			}
 		});
 		BasicArrowButton downArrow = new BasicArrowButton(BasicArrowButton.SOUTH);
+		downArrow.addMouseListener(new BasicButtonListener(downArrow) {
+			int position =0;
+			public void mousePressed(MouseEvent e) {
+		    	  textField.setText(history.get(position).toString());
+		    	  
+		    	  if (position < history.size()-1) {
+		    	  position+=1;
+		      }
+		    	  else {
+		  			throw new TraversingException("End of Down Arrow History ");
+		    	}
+			}
+		});
 		
 
 		
