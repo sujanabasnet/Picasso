@@ -26,7 +26,7 @@ public abstract class StringFunction extends ExpressionTreeNode{
 		charToExpression.put("e", new Abs(new Addition(new X(), new Y())));
 		charToExpression.put("f", new Ceil(new Mod(new Y(), new X())));
 		charToExpression.put("g", new Floor(new Subtraction(new Y(), new X())));
-		charToExpression.put("h", new Log(new Exponentiate(new Y(), new X())));
+		charToExpression.put("h", new Rgbtoycrcb(new Mod(new Y(), new X())));
 		charToExpression.put("i", new Mod(new Addition(new X(), new Y()), new X()));
 		charToExpression.put("j", new Ycrcbtorgb(new Mod(new Y(), new X())));
 		charToExpression.put("k", new Rgbtoycrcb(new Subtraction(new Y(), new X())));
@@ -34,12 +34,12 @@ public abstract class StringFunction extends ExpressionTreeNode{
 		charToExpression.put("m", new Cos(new Addition(new X(), new Y())));
 		charToExpression.put("n", new Atan(new Mod(new Y(), new X())));
 		charToExpression.put("o", new Subtraction(new Subtraction(new Y(), new X()), new Y()));
-		charToExpression.put("p", new Mod(new Exponentiate(new X(), new Y()), new Ycrcbtorgb( new Y())));
-		charToExpression.put("q", new Exponentiate(new Addition(new X(), new Y()), new X()));
+		charToExpression.put("p", new Mod(new X(), new Exp(new Ycrcbtorgb( new Y()))));
+		charToExpression.put("q", new Mod(new Addition(new X(), new Y()), new X()));
 		charToExpression.put("r", new Exp(new Mod(new Y(), new X())));
 		charToExpression.put("s", new Rgbtoycrcb(new Division(new X(), new Y())));
 		charToExpression.put("t", new Exp(new Multiplication(new Y(), new X())));
-		charToExpression.put("u", new Multiplication(new Exponentiate(new Y(), new X()), new Sin(new X())));
+		charToExpression.put("u", new Multiplication(new Mod(new Y(), new X()), new Sin(new X())));
 		charToExpression.put("v", new Sin(new Rgbtoycrcb(new X())));
 		charToExpression.put("w", new Division(new Addition(new X(), new Y()), new X()));
 		charToExpression.put("x", new Mod(new Cos(new X()), new Y()));
@@ -52,17 +52,17 @@ public abstract class StringFunction extends ExpressionTreeNode{
 		charToExpression.put("C", new Tan(new X()));
 		charToExpression.put("D", new Atan(new X()));
 		charToExpression.put("E", new Abs(new Subtraction(new X(), new Y())));
-		charToExpression.put("F", new Ceil(new Exponentiate(new Y(), new X())));
+		charToExpression.put("F", new Ceil(new Multiplication(new Y(), new X())));
 		charToExpression.put("G", new Floor(new Addition(new Y(), new X())));
-		charToExpression.put("H", new Log(new Mod(new Y(), new X())));
+		charToExpression.put("H", new Rgbtoycrcb(new Mod(new Y(), new X())));
 		charToExpression.put("I", new PerlinBW(new Addition(new X(), new Y()), new Y()));
-		charToExpression.put("J", new Ycrcbtorgb(new Exponentiate(new Y(), new X())));
+		charToExpression.put("J", new Ycrcbtorgb(new Addition(new Y(), new X())));
 		charToExpression.put("K", new Rgbtoycrcb(new Mod(new Y(), new X())));
 		charToExpression.put("L", new Exp(new Division(new X(), new Y())));
 		charToExpression.put("M", new Cos(new PerlinColor(new X(), new Y())));
 		charToExpression.put("N", new Atan(new Subtraction(new Floor(new Y()), new X())));
 		charToExpression.put("O", new Addition(new Subtraction(new Y(), new X()), new PerlinColor(new X(), new Ceil(new Y()))));
-		charToExpression.put("P", new Multiplication(new Exponentiate(new X(), new Y()), new Ycrcbtorgb( new X())));
+		charToExpression.put("P", new Multiplication(new Mod(new X(), new Y()), new Ycrcbtorgb( new X())));
 		charToExpression.put("Q", new Division(new Addition(new X(), new Y()), new Y()));
 		charToExpression.put("R", new Exp(new Mod(new Y(), new Ycrcbtorgb(new X()))));
 		charToExpression.put("S", new Rgbtoycrcb(new Multiplication(new X(), new Floor(new Y()))));
@@ -70,7 +70,7 @@ public abstract class StringFunction extends ExpressionTreeNode{
 		charToExpression.put("U", new Division(new Mod(new Y(), new X()), new Atan(new Y())));
 		charToExpression.put("V", new Cos(new Rgbtoycrcb(new Y())));
 		charToExpression.put("W", new Multiplication(new Subtraction(new X(), new Y()), new Y()));
-		charToExpression.put("X", new Exponentiate(new Sin(new X()), new Y()));
+		charToExpression.put("X", new Division(new Sin(new X()), new Y()));
 		charToExpression.put("Y", new PerlinColor(new Multiplication(new X(), new Y()), new Y()));
 		charToExpression.put("Z", new Log(new Division(new Y(), new X())));
 		
@@ -143,7 +143,7 @@ public abstract class StringFunction extends ExpressionTreeNode{
 				String splice = s.substring(i, i + 1);
 				String splice2 = s.substring(i+1, i+2);
 				
-				int randnum = rand.nextInt(7);
+				int randnum = rand.nextInt(6);
 	
 				 
 				if (randnum == 1) {
@@ -167,9 +167,9 @@ public abstract class StringFunction extends ExpressionTreeNode{
 					ExpressionTreeNode ets =  new Subtraction(charToExpression.get(splice), charToExpression.get(splice2));
 					total = new Addition(total, ets);
 					}
-				if (randnum == 6) {
-					ExpressionTreeNode ete =  new Exponentiate(charToExpression.get(splice), charToExpression.get(splice2));
-					total = new Addition(total, ete);}
+//				if (randnum == 6) {
+//					ExpressionTreeNode ete =  new Exponentiate(charToExpression.get(splice), charToExpression.get(splice2));
+//					total = new Addition(total, ete);}
 				
 				
 			}
@@ -186,7 +186,7 @@ public abstract class StringFunction extends ExpressionTreeNode{
 				String splice = s.substring(i, i + 1);
 				String splice2 = s.substring(i+1, i+2);
 				
-				int randnum = rand.nextInt(7);
+				int randnum = rand.nextInt(6);
 	
 				
 				if (randnum == 1) {
@@ -210,9 +210,9 @@ public abstract class StringFunction extends ExpressionTreeNode{
 					ExpressionTreeNode ets =  new Subtraction(charToExpression.get(splice), charToExpression.get(splice2));
 					total = new Addition(total, ets);
 					}
-				if (randnum == 6) {
-					ExpressionTreeNode ete =  new Exponentiate(charToExpression.get(splice), charToExpression.get(splice2));
-					total = new Addition(total, ete);}
+//				if (randnum == 6) {
+//					ExpressionTreeNode ete =  new Exponentiate(charToExpression.get(splice), charToExpression.get(splice2));
+//					total = new Addition(total, ete);}
 				
 			
 			}
