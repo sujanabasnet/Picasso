@@ -1,6 +1,5 @@
 package picasso.view;
 import java.util.ArrayList;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +20,6 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicButtonListener;
-
-
-import picasso.Main;
-
 import picasso.model.Pixmap;
 import picasso.util.Command;
 import picasso.util.ThreadedCommand;
@@ -149,7 +144,7 @@ public class Frame extends JFrame {
 
 		
 		//history window + canvas
-		JSplitPane splitPane = new JSplitPane();
+		//JSplitPane splitPane = new JSplitPane();
 		
 		//JScrollBar scrollBar = new JScrollBar();
 		splitPane.setLeftComponent(scrollableList);
@@ -255,7 +250,7 @@ public class Frame extends JFrame {
 		      }
 		    	  else {
 		    		  position =0;
-		  			throw new TraversingException("End of Up Arrow History. Going back to beginning of history.");
+		  			throw new TraversingException("End of Up Arrow History.");
 
 	
 		    	}
@@ -271,16 +266,13 @@ public class Frame extends JFrame {
 		    	  spot-=1;
 		      }
 		    	  else {
-		    		  spot = history.size();
-		  			throw new TraversingException("End of Down Arrow History. Going back to beginning of history. ");
+		    		spot = history.size();
+		  			throw new TraversingException("End of Down Arrow History.");
 		    	}
 		    	  
 			}
 		});
 		
-
-		      }
-		});
 		
 		JButton button3 = new JButton("Evaluate in a new window");
 		button3.addActionListener(new ActionListener() {
@@ -304,8 +296,6 @@ public class Frame extends JFrame {
 		
 
 	
-
-		
 		//Saved Variables Tab 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
