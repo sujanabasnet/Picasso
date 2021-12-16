@@ -201,7 +201,7 @@ public class ExpressionTreeGenerator {
 
 		// TODO: DISCUSS: Is it better to have a method in the OperatorToken
 		// class that gives the order of operation?
-		if (token instanceof StarToken || token instanceof SlashToken) {
+		if (token instanceof StarToken || token instanceof SlashToken || token instanceof ModToken) {
 			return MULTIPLY_OR_DIVIDE;
 		}
 		else if (token instanceof PlusToken || token instanceof MinusToken) {

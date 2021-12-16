@@ -63,4 +63,5 @@ public class ThreadedCommand<T> implements Command<T> {
 			isDone = true;
 		}
 	}
+
 }

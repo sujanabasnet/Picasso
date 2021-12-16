@@ -1,9 +1,11 @@
 package picasso.view;
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import picasso.parser.IdentifierAnalyzer;
@@ -19,6 +21,10 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicButtonListener;
+
+
+import picasso.Main;
+
 import picasso.model.Pixmap;
 import picasso.util.Command;
 import picasso.util.ThreadedCommand;
@@ -33,10 +39,8 @@ import picasso.view.commands.*;
  */
 
 public class Frame extends JFrame {
-	
 
-	@SuppressWarnings("unchecked")
-
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 
 	public Frame(Dimension size) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -116,6 +120,14 @@ public class Frame extends JFrame {
 		    	  scrollableList.setViewportView(list);
 		      }
 		});
+		
+		//history window + canvas (split pane) 
+		JSplitPane splitPane = new JSplitPane();
+		getContentPane().add(splitPane, BorderLayout.CENTER);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		splitPane.setLeftComponent(scrollableList);
+		splitPane.setRightComponent(canvas);
 
 		
 
@@ -199,7 +211,7 @@ public class Frame extends JFrame {
 		    	  history.add(textField.getText());
 		    	  JList historyList = new JList(history.toArray());
 		    	  canvas.refresh();
-		    	  
+
 		    	  /*
 		    	  System.out.println(exMap.toString());
 		    	  //objects = name.toArray();
@@ -267,6 +279,31 @@ public class Frame extends JFrame {
 		});
 		
 
+		      }
+		});
+		
+		JButton button3 = new JButton("Evaluate in a new window");
+		button3.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent e) {
+		    	  JFrame newFrame = new JFrame();
+		    	  newFrame.setPreferredSize(size);
+		    	  Canvas newCanvas = new Canvas(newFrame);
+		    	  newFrame.setTitle(textField.getText());
+		    	  newCanvas.getPixmap().setSize(size);
+		    	  Command<Pixmap> action2 = new ThreadedCommand<Pixmap>(newCanvas, evaluater);
+		    	  evaluater.setExpression(textField.getText());
+		    	  action2.execute(newCanvas.getPixmap());
+		    	  //newCanvas.refresh();
+		    	  newFrame.getContentPane().add(newCanvas);
+		    	  newFrame.pack();
+		    	  newFrame.setVisible(true);
+		    	  newFrame.setLocation(800, 0);
+		    	 
+		      }
+		});
+		
+
+	
 
 		
 		//Saved Variables Tab 
@@ -281,6 +318,7 @@ public class Frame extends JFrame {
 		inputPane.add(textField);
 		inputPane.add(button2);
 		inputPane.add(button);
+		inputPane.add(button3);
 		historyPane.add(list);
 		
 		getContentPane().add(tabbedPane, BorderLayout.NORTH);
@@ -292,4 +330,6 @@ public class Frame extends JFrame {
 		}
 		
 	}
+  	  
+
 

@@ -1,24 +1,18 @@
-/**
- * 
- */
 package picasso.parser.language.expressions;
 
 import java.awt.Dimension;
 
 import helper.Image;
 import helper.MathHelp;
-import picasso.model.Pixmap;
 import picasso.parser.ParseException;
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.view.commands.Evaluater;
 
 /**
- *
- * Represents the ImageWrap function.
+ * Represents the ImageClip function.
  * @author sujanabasnet
  *
  */
-public class ImageWrap extends MultipleArgumentFunctions {
+public class ImageClip extends MultipleArgumentFunctions {
 
 	private Image image;
 
@@ -27,17 +21,18 @@ public class ImageWrap extends MultipleArgumentFunctions {
 	 * @param expr1
 	 * @param expr2
 	 */
-	public ImageWrap(String name, ExpressionTreeNode expr1, ExpressionTreeNode expr2) {
+	public ImageClip(String name, ExpressionTreeNode expr1, ExpressionTreeNode expr2) {
 		super(expr1, expr2);
 		image = new Image(name);
+
 	}
 
 	@Override
 	public RGBColor evaluate(double x, double y) {
 		RGBColor a = expr1.evaluate(x, y);
 		RGBColor b = expr2.evaluate(x, y);
-		double newX = MathHelp.wrap(a.getRed());
-		double newY = MathHelp.wrap(b.getRed());
+		double newX = MathHelp.clamp(a.getRed());
+		double newY = MathHelp.clamp(b.getRed());
 		Dimension size;
 		try {
 			size = image.getSize();
@@ -47,7 +42,8 @@ public class ImageWrap extends MultipleArgumentFunctions {
 		int evalX = Image.domainToImageScale(newX, size.width-1);
 		int evalY = Image.domainToImageScale(newY, size.height-1);	
 		return new RGBColor(image.getColor(evalX, evalY));
-	}
+		}
+
 
 
 

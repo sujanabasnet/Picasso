@@ -69,5 +69,9 @@ public class Evaluater implements Command<Pixmap> {
 	public void setExpression(String input) {
 		EXPRESSION =input;
 	}
+	
+	public void setRandomExpression() {
+		
+	}
 
 }

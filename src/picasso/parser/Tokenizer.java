@@ -126,7 +126,7 @@ public class Tokenizer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String expression = "imageWrap(\"image.jpg\", x, y)";
+		String expression = "hello)";
 
 		Tokenizer tokenizer = new Tokenizer();
 		System.out.println("Tokens" + tokenizer.parseTokens(expression));

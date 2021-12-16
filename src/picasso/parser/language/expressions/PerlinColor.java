@@ -7,6 +7,7 @@ import picasso.model.ImprovedNoise;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
+ * Represents the PerlinColor function.
  * @author andrewmarsh
  *
  */

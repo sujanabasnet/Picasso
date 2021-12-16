@@ -28,11 +28,11 @@ public class Image {
 	 */
 	public Image(String name) {
 		try {
-			myFileName = name;
+			myFileName = "images/" + name;
 			myImage = ImageIO.read(new File(myFileName));
 			mySize = new Dimension(myImage.getWidth(), myImage.getHeight());
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Can't read input file");
 		}
 	}
 	public boolean isInBounds(int x, int y) {

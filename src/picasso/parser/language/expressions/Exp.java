@@ -5,7 +5,6 @@ import picasso.parser.language.ExpressionTreeNode;
 /**
  * Represents the Exp function in the Picasso language.
  * 
- * @author Robert C. Duvall
  * @author Jared Cordova
  *
  */

@@ -6,7 +6,7 @@ package picasso.parser;
 import java.util.Stack;
 
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.parser.language.expressions.ImageWrap;
+import picasso.parser.language.expressions.ImageClip;
 import picasso.parser.tokens.StringToken;
 import picasso.parser.tokens.Token;
 
@@ -14,7 +14,7 @@ import picasso.parser.tokens.Token;
  * @author sujanabasnet
  *
  */
-public class ImageWrapAnalyzer implements SemanticAnalyzerInterface {
+public class ImageClipAnalyzer implements SemanticAnalyzerInterface {
 
 
 	@Override
@@ -30,7 +30,7 @@ public class ImageWrapAnalyzer implements SemanticAnalyzerInterface {
 		StringToken token = (StringToken) tokens.pop();
 		String fileName = token.getName();
 		
-		return new ImageWrap(fileName, expr1, expr2);
+		return new ImageClip(fileName, expr1, expr2);
 
 	}
 

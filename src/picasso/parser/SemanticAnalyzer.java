@@ -69,6 +69,12 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 		tokenName = TOKENS_PACKAGE_NAME + "chars.EqualsToken";
 		parserName = PARSER_PACKAGE + "EqualsAnalyzer";
 		addSemanticAnalyzerMapping(tokenName, parserName);
+		
+		tokenName = TOKENS_PACKAGE_NAME + "StringToken";
+		parserName = PARSER_PACKAGE + "StringAnalyzer";
+		addSemanticAnalyzerMapping(tokenName, parserName);
+		
+		
 
 		// TODO: Are there any others that should be added?
 		// Is there a better way to create this mapping?
