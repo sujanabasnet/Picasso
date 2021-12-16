@@ -243,28 +243,33 @@ public class Frame extends JFrame {
 		upArrow.addMouseListener(new BasicButtonListener(upArrow) {
 			int position =0;
 			public void mousePressed(MouseEvent e) {
-		    	  textField.setText(history.get(position).toString());
 		    	  
 		    	  if (position < history.size()-1) {
+			      textField.setText(history.get(position).toString());
 		    	  position+=1;
 		      }
 		    	  else {
-		  			throw new TraversingException("End of Up Arrow History ");
+		    		  position =0;
+		  			throw new TraversingException("End of Up Arrow History. Going back to beginning of history.");
+
+	
 		    	}
 			}
 		});
 		BasicArrowButton downArrow = new BasicArrowButton(BasicArrowButton.SOUTH);
 		downArrow.addMouseListener(new BasicButtonListener(downArrow) {
-			int position =0;
+			int spot = history.size();
 			public void mousePressed(MouseEvent e) {
-		    	  textField.setText(history.get(position).toString());
 		    	  
-		    	  if (position < history.size()-1) {
-		    	  position+=1;
+		    	  if (spot >= 0) {
+			      textField.setText(history.get(spot).toString());
+		    	  spot-=1;
 		      }
 		    	  else {
-		  			throw new TraversingException("End of Down Arrow History ");
+		    		  spot = history.size();
+		  			throw new TraversingException("End of Down Arrow History. Going back to beginning of history. ");
 		    	}
+		    	  
 			}
 		});
 		
