@@ -4,7 +4,7 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents the mod binary operator
+ * Represents the modulo binary operator
  * @author Praise Apata
  *
  */

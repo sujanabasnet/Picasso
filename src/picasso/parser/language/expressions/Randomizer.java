@@ -6,6 +6,7 @@ package picasso.parser.language.expressions;
 import java.util.Random;
 
 /**
+ * Represents random expression evaluation
  * @author Sarah Martin
  *
  */

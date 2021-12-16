@@ -3,8 +3,6 @@
  */
 package picasso.parser.language.expressions;
 
-import javax.swing.text.html.HTMLEditorKit.Parser;
-
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
