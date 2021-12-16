@@ -7,32 +7,23 @@ import java.util.Map;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import picasso.parser.IdentifierAnalyzer;
-import picasso.parser.ParseException;
 import picasso.parser.TraversingException;
 import picasso.parser.language.ExpressionTreeNode;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.io.FileInputStream;
-import java.io.IOException;
-
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.util.*;
 import java.awt.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicButtonListener;
-import javax.swing.table.DefaultTableModel;
-
 import picasso.model.Pixmap;
 import picasso.util.Command;
 import picasso.util.ThreadedCommand;
 import picasso.view.commands.*;
-import picasso.view.equalsDisplay; 
+ 
 
 /**
  * Main container for the Picasso application
@@ -208,6 +199,8 @@ public class Frame extends JFrame {
 		    	  history.add(textField.getText());
 		    	  JList historyList = new JList(history.toArray());
 		    	  canvas.refresh();
+		    	  
+		    	  /*
 		    	  System.out.println(exMap.toString());
 		    	  //objects = name.toArray();
 		    	  System.out.println(history.toString());
@@ -220,7 +213,7 @@ public class Frame extends JFrame {
 
 
 		    	  
-		    	  /*
+		    	
 		    	  Map<String, ExpressionTreeNode> exMap = IdentifierAnalyzer.getIdToExpression(); 
 		    	  ArrayList<String> name = new ArrayList<String>();
 		    	  for (Map.Entry<String, ExpressionTreeNode> set :
@@ -237,7 +230,7 @@ public class Frame extends JFrame {
 		      
 		}});
 		
-		//arrows (NOT FUNCTIONAL YET - NO EVENT LISTENER)
+		//arrows 
 
 		BasicArrowButton upArrow = new BasicArrowButton(BasicArrowButton.NORTH);
 		upArrow.addMouseListener(new BasicButtonListener(upArrow) {
@@ -273,22 +266,6 @@ public class Frame extends JFrame {
 			}
 		});
 		
-
-		
-		ArrayList<Object> result = new ArrayList<Object>();
-		
-		for (int i=0; i < objects.length; i++) {
-			Evaluater evaluater1 = new Evaluater();
-			Command<Pixmap> action1 = new ThreadedCommand<Pixmap>(canvas, evaluater1);
-			evaluater1.setExpression(objects[i].toString());
-			action1.execute(canvas.getPixmap());
-			new AutoSaveImage().execute(canvas.getPixmap(),objects[i].toString());
-			
-			
-			//assignWithImage lista = new assignWithImage(objects[i].toString(), objects[i].toString()+".jpg" );
-			//result.add(lista);
-	
-		}
 
 
 		
