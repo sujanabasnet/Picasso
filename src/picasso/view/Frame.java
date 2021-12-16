@@ -11,13 +11,19 @@ import picasso.parser.language.ExpressionTreeNode;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.util.*;
 import java.awt.*;
 import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.plaf.basic.BasicButtonListener;
 import javax.swing.table.DefaultTableModel;
 
 import picasso.model.Pixmap;
@@ -79,10 +85,6 @@ public class Frame extends JFrame {
 		Border blackline = BorderFactory.createTitledBorder("Saved");
 		JPanel historyPane = new JPanel();
 		historyPane.setBorder(blackline);
-
-		//arrows (NOT FUNCTIONAL YET - NO EVENT LISTENER)
-		BasicArrowButton upArrow = new BasicArrowButton(BasicArrowButton.NORTH);
-		BasicArrowButton downArrow = new BasicArrowButton(BasicArrowButton.SOUTH);
 		
 		
 		// add input window and evaluate button 
@@ -181,12 +183,18 @@ public class Frame extends JFrame {
 		scrollFrameHolder.add(lista);
 		scrollFrameHolder.setLayout(new FlowLayout());
 		
+		
+		ArrayList<String> history =  new ArrayList<String>();
+		
 		/*
 		for (Object item: objects) {
 			dlm.addElement(item);
 		}*/
 		
 		//System.out.println(objects.toString());
+		
+		JList historyList = new JList(history.toArray());
+		historyList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		JButton button = new JButton("Evaluate");
 		Evaluater evaluater = new Evaluater();
@@ -195,9 +203,12 @@ public class Frame extends JFrame {
 		      public void actionPerformed(ActionEvent e) {
 		    	  evaluater.setExpression(textField.getText());
 		    	  action.execute(canvas.getPixmap());
+		    	  history.add(textField.getText());
+		    	  JList historyList = new JList(history.toArray());
 		    	  canvas.refresh();
 		    	  System.out.println(exMap.toString());
 		    	  //objects = name.toArray();
+		    	  System.out.println(history.toString());
 		    	  for (String key: exMap.keySet()) {
 		  				refreshableList.addElement(key);
 		  			}
@@ -224,6 +235,22 @@ public class Frame extends JFrame {
 		      
 		}});
 		
+		//arrows (NOT FUNCTIONAL YET - NO EVENT LISTENER)
+
+		BasicArrowButton upArrow = new BasicArrowButton(BasicArrowButton.NORTH);
+		upArrow.addMouseListener(new BasicButtonListener(upArrow) {
+			int position =0;
+			public void mousePressed(MouseEvent e) {
+		    	  textField.setText(history.get(position).toString());
+		    	  position+=1; 
+
+		      }
+
+
+		});
+		BasicArrowButton downArrow = new BasicArrowButton(BasicArrowButton.SOUTH);
+		
+
 		
 		ArrayList<Object> result = new ArrayList<Object>();
 		
@@ -240,6 +267,7 @@ public class Frame extends JFrame {
 	
 		}
 
+
 		
 		//Saved Variables Tab 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -247,7 +275,8 @@ public class Frame extends JFrame {
 				
 		tabbedPane.addTab("Currently Defined Variables", null, scrollFrameHolder, "Display the defined variable names and their values");
 
-
+		inputPane.add(upArrow);
+		inputPane.add(downArrow);
 		inputPane.add(label);
 		inputPane.add(textField);
 		inputPane.add(button2);
