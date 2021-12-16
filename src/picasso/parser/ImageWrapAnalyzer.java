@@ -11,6 +11,7 @@ import picasso.parser.tokens.StringToken;
 import picasso.parser.tokens.Token;
 
 /**
+ * Semantic Analyzer for Image Wrap function (Handles parsing for image wrap)
  * @author sujanabasnet
  *
  */

@@ -2,7 +2,7 @@ package picasso.parser;
 import javax.swing.JOptionPane;
 
 /**
- * Describe an exception that occured while traversing the input history.
+ * Describe an exception that occurred while traversing the input history.
  * 
  * @author Praise Apata
  *
