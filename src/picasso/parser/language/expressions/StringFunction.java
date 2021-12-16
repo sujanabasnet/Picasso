@@ -25,8 +25,8 @@ public abstract class StringFunction extends ExpressionTreeNode{
 		charToExpression.put("c", new Tan(new X()));
 		charToExpression.put("d", new Atan(new Y()));
 		charToExpression.put("e", new Abs(new Addition(new X(), new Y())));
-		charToExpression.put("f", new Ceil(new Mod(new Y(), new X())));
-		charToExpression.put("g", new Floor(new Subtraction(new Y(), new X())));
+		charToExpression.put("f", new Abs(new Mod(new Y(), new X())));
+		charToExpression.put("g", new Cos(new Subtraction(new Y(), new X())));
 		charToExpression.put("h", new RGBToYCrCb(new Mod(new Y(), new X())));
 		charToExpression.put("i", new Mod(new Addition(new X(), new Y()), new X()));
 		charToExpression.put("j", new YCrCbToRGB(new Mod(new Y(), new X())));
@@ -53,8 +53,8 @@ public abstract class StringFunction extends ExpressionTreeNode{
 		charToExpression.put("C", new Tan(new X()));
 		charToExpression.put("D", new Atan(new X()));
 		charToExpression.put("E", new Abs(new Subtraction(new X(), new Y())));
-		charToExpression.put("F", new Ceil(new Multiplication(new Y(), new X())));
-		charToExpression.put("G", new Floor(new Addition(new Y(), new X())));
+		charToExpression.put("F", new Atan(new Multiplication(new Y(), new X())));
+		charToExpression.put("G", new Exp(new Addition(new Y(), new X())));
 		charToExpression.put("H", new RGBToYCrCb(new Mod(new Y(), new X())));
 		charToExpression.put("I", new PerlinBW(new Addition(new X(), new Y()), new Y()));
 		charToExpression.put("J", new YCrCbToRGB(new Addition(new Y(), new X())));
