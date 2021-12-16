@@ -2,7 +2,7 @@ package picasso.parser;
 import javax.swing.JOptionPane;
 
 /**
- * Describe an exception that occured during parsing.
+ * Describe an exception that occurred during parsing.
  * 
  * @author Sara Sprenkle
  *

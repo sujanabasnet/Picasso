@@ -3,9 +3,6 @@ package picasso.parser.language.expressions;
 import picasso.model.ImprovedNoise;
 
 /**
- * This is the original implementation. Will probably want to refactor to fit
- * within new framework.
- * 
  * Enumeration to evaluate binary operations and methods
  * 
  */

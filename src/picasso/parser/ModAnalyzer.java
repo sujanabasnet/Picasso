@@ -7,7 +7,7 @@ import picasso.parser.language.expressions.Mod;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing the modulo.
+ * Handles parsing the modulo operator.
  * @author Praise Apata
  * 
  */

@@ -119,9 +119,6 @@ public class Frame extends JFrame {
 	
 		
 		//history window + canvas
-		//JSplitPane splitPane = new JSplitPane();
-		
-		//JScrollBar scrollBar = new JScrollBar();
 		splitPane.setLeftComponent(scrollableList);
 		splitPane.setRightComponent(canvas);
 		
@@ -145,6 +142,7 @@ public class Frame extends JFrame {
 		    	  }
 		    	  evaluater.setExpression(input);
 		    	  action.execute(canvas.getPixmap());
+		    	  history.add(textField.getText());
 		    	  history.add(input);
 		    	  canvas.refresh(); 
 		}});
@@ -224,7 +222,6 @@ public class Frame extends JFrame {
 		scroll.setPreferredSize(new Dimension(150,50));
 
 
-	
 		inputPane.add(upArrow);
 		inputPane.add(downArrow);
 		inputPane.add(label);

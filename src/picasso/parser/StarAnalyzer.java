@@ -7,7 +7,7 @@ import picasso.parser.language.expressions.Multiplication;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing the star or "multiplication function".
+ * Handles parsing the star or "multiplication" function.
  * 
  * @author Robert C. Duvall
  * @author Sarah Martin
