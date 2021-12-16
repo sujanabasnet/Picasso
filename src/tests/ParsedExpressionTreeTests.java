@@ -272,20 +272,20 @@ public class ParsedExpressionTreeTests {
 	@Test
 	public void ycrcbtorgbFunctionTests() {
 		ExpressionTreeNode r = parser.makeExpression("ycrcbtorgb(x)");
-		assertEquals(new Ycrcbtorgb(new X()), r);
+		assertEquals(new YCrCbToRGB(new X()), r);
 		
 		r = parser.makeExpression("ycrcbtorgb(x + y)");
-		assertEquals(new Ycrcbtorgb(new Addition(new X(), new Y())), r);
+		assertEquals(new YCrCbToRGB(new Addition(new X(), new Y())), r);
 		
 	}
 
 	@Test
 	public void rgbtoycrcbFunctionTests() {
 		ExpressionTreeNode rgb = parser.makeExpression("rgbtoycrcb(x)");
-		assertEquals(new Rgbtoycrcb(new X()), rgb);
+		assertEquals(new RGBToYCrCb(new X()), rgb);
 		
 		rgb = parser.makeExpression("rgbtoycrcb(x + y)");
-		assertEquals(new Rgbtoycrcb(new Addition(new X(), new Y())), rgb);
+		assertEquals(new RGBToYCrCb(new Addition(new X(), new Y())), rgb);
 		
 	}
 	
