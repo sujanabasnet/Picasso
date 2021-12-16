@@ -8,10 +8,10 @@ package picasso.parser.tokens.functions;
  * @author sarahmartin
  *
  */
-public class RgbtoycrcbToken extends FunctionToken {
+public class RGBToYCrCbToken extends FunctionToken {
 
-	public RgbtoycrcbToken() {
-		super("Rgbtoycrcb Function Token");
+	public RGBToYCrCbToken() {
+		super("RGBToYCrCb Function Token");
 	}
 
 }

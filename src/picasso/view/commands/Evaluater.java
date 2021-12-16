@@ -2,6 +2,7 @@ package picasso.view.commands;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -20,6 +21,10 @@ public class Evaluater implements Command<Pixmap> {
 	public static final double DOMAIN_MIN = -1;
 	public static final double DOMAIN_MAX = 1;
 	private static  String EXPRESSION;
+	
+	
+	
+	
 	
 
 	/**
@@ -53,25 +58,15 @@ public class Evaluater implements Command<Pixmap> {
 	 * A place holder for a more interesting way to build the expression.
 	 */
 	private ExpressionTreeNode createExpression() {
-		// Note, when you're testing, you can use the ExpressionTreeGenerator to
-		// generate expression trees from strings, or you can create expression
-		// objects directly (as in the commented statement below).
-
-		//String test = "ceil(y)";
-		//String test = "x + y";
-
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
 		return expTreeGen.makeExpression(EXPRESSION);
 
-		// return new Multiply( new X(), new Y() );
 	}
 	
 	public void setExpression(String input) {
 		EXPRESSION =input;
 	}
-	
-	public void setRandomExpression() {
-		
-	}
 
 }
+
+

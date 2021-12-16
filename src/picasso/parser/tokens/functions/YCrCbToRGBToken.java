@@ -6,10 +6,10 @@ package picasso.parser.tokens.functions;
  * @author Sarah Martin
  */
 
-public class YcrcbtorgbToken extends FunctionToken {
+public class YCrCbToRGBToken extends FunctionToken {
 
-	public YcrcbtorgbToken() {
-		super("Ycrcbtorgb Function Token");
+	public YCrCbToRGBToken() {
+		super("YCrCbToRGB Function Token");
 	}
 
 }

@@ -145,7 +145,13 @@ public class Frame extends JFrame {
 		Command<Pixmap> action = new ThreadedCommand<Pixmap>(canvas, evaluater);
 		button.addActionListener(new ActionListener() {
 		      public void actionPerformed(ActionEvent e) {
-		    	  evaluater.setExpression(textField.getText());
+		    	  String input = textField.getText();
+		    	  if (input.isEmpty()) {
+		    		  evaluater.setExpression(RandomExpressionGenerator.getRandomExpression(0, input));
+		    	  }
+		    	  else {
+		    		  evaluater.setExpression(input);
+		    	  }
 		    	  action.execute(canvas.getPixmap());
 		    	  canvas.refresh();
 		      }
@@ -157,10 +163,16 @@ public class Frame extends JFrame {
 		    	  JFrame newFrame = new JFrame();
 		    	  newFrame.setPreferredSize(size);
 		    	  Canvas newCanvas = new Canvas(newFrame);
-		    	  newFrame.setTitle(textField.getText());
 		    	  newCanvas.getPixmap().setSize(size);
 		    	  Command<Pixmap> action2 = new ThreadedCommand<Pixmap>(newCanvas, evaluater);
-		    	  evaluater.setExpression(textField.getText());
+		    	  String input = textField.getText();
+		    	  if (input.isEmpty()) {
+		    		  evaluater.setExpression(RandomExpressionGenerator.getRandomExpression(0, input));
+		    	  }
+		    	  else {
+		    		  evaluater.setExpression(input);
+		    		  newFrame.setTitle(input);
+		    	  }
 		    	  action2.execute(newCanvas.getPixmap());
 		    	  //newCanvas.refresh();
 		    	  newFrame.getContentPane().add(newCanvas);
