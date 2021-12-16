@@ -28,7 +28,7 @@ public class Image {
 	 */
 	public Image(String name) {
 		try {
-			myFileName = name;
+			myFileName = "images/" + name;
 			myImage = ImageIO.read(new File(myFileName));
 			mySize = new Dimension(myImage.getWidth(), myImage.getHeight());
 		} catch (IOException e) {
