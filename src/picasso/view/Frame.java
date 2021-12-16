@@ -76,7 +76,7 @@ public class Frame extends JFrame {
 		JPanel inputPane = new JPanel();
 		JLabel label = new JLabel("Expression:");
 		JTextField textField = new JTextField();
-		textField.setColumns(15);
+		//textField.setColumns(15);
 		
 		
 		ArrayList<String> data= new ArrayList<String>();
@@ -141,6 +141,7 @@ public class Frame extends JFrame {
 		    	  String input = textField.getText();
 		    	  if (input.isEmpty()) {
 		    		 input = RandomExpressionGenerator.getRandomExpression(0, input);
+		    		 textField.setText(input);
 		    	  }
 		    	  evaluater.setExpression(input);
 		    	  action.execute(canvas.getPixmap());
