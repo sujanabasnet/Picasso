@@ -40,4 +40,9 @@ public class IdentifierAnalyzer implements SemanticAnalyzerInterface {
 		return null;
 	}
 
+	public static Map<String, ExpressionTreeNode> getIdToExpression() {
+		// TODO Auto-generated method stub
+		return idToExpression;
+	}
+
 }
