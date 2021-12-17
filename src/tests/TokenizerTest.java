@@ -302,6 +302,13 @@ public class TokenizerTest {
 		assertEquals(new ModToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		
+		expression = "!x";
+		tokens = tokenizer.parseTokens(expression);
+		assertEquals(new BangToken(), tokens.get(0));
+		assertEquals(new IdentifierToken("x"), tokens.get(1));
+
+
+		
 	}
 	
 	@Test

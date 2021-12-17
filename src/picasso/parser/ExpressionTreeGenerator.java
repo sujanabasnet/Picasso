@@ -25,6 +25,7 @@ public class ExpressionTreeGenerator {
 	private static final int ADD_OR_SUBTRACT = 2;
 	private static final int MULTIPLY_OR_DIVIDE = 3;
 	private static final int EXPONENTIATE = 4;
+	private static final int NEGATE = 5;
 	
 
 
@@ -209,6 +210,9 @@ public class ExpressionTreeGenerator {
 		}
 		else if (token instanceof ExponentiateToken) {
 			return EXPONENTIATE;
+		}
+		else if (token instanceof BangToken) {
+			return NEGATE;
 		}
 		else
 			return CONSTANT;

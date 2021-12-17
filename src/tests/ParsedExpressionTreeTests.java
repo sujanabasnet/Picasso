@@ -124,6 +124,20 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new Mod(new Mod(new X(), new Y()), new RGBColor(-.51, 0, 1)), m);
 	}
 	
+	@Test
+	public void negExpressionTests() {
+		ExpressionTreeNode m = parser.makeExpression("! x");
+		assertEquals(new Negate(new X()), m);
+		
+		// no spaces!
+		m = parser.makeExpression("!y");
+		assertEquals(new Negate(new Y()), m);
+
+		m = parser.makeExpression("![1,.5,-1]");
+		assertEquals(new Negate(new RGBColor(1, .5, -1)), m);
+
+	}
+	
 	
 	
 	@Test

@@ -10,7 +10,7 @@ import helper.MathHelp;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents the string function.
+ * Represents the string with image name.
  * @author sujanabasnet
  *
  */
