@@ -194,7 +194,7 @@ public class EvaluatorTests {
 	public void testYcrcbtorgbEvaluation() {
 		Y y = new Y();
 		YCrCbToRGB a = new YCrCbToRGB(y);
-		assertEquals(new RGBColor(.7011,.123456,.8855), a.evaluate(.5, .5));
+		assertEquals(new RGBColor(1.2010999999999998, -0.03005000000000002, 1.3855), a.evaluate(.5, .5));
 
 	} 
 
@@ -282,16 +282,24 @@ public class EvaluatorTests {
 		Y y = new Y();
 		Addition plus = new Addition(x, x);
 		ImageWrap wrap = new ImageWrap("test.jpg", plus, y);
-		assertEquals(new RGBColor(0, 0, 0), wrap.evaluate(-1, -1));
+		assertEquals(new RGBColor(-1, -1, -1), wrap.evaluate(-1, -1));
 	}
 	
 	@Test
 	public void testImageToDomain() {
-		assertEquals(0, Image.domainToImageScale(-1, 600));
-		assertEquals(599, Image.domainToImageScale(1, 600));
-		assertEquals(300, Image.domainToImageScale(0, 600));
+		assertEquals(0, Image.domainToImageScale(-1, 599));
+		assertEquals(599, Image.domainToImageScale(1, 599));
+		assertEquals(299, Image.domainToImageScale(0, 599));
 	}
 	
+	@Test
+	public void testImageClip() {
+		X x = new X();
+		Y y = new Y();
+		Addition plus = new Addition(x, x);
+		ImageClip clip = new ImageClip("test.jpg", plus, y);
+		assertEquals(new RGBColor(1, 1, 1), clip.evaluate(-1, 1));
+	}
 	/*
 	@Test
 	public void testStringsEvaluation() {
