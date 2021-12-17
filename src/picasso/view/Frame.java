@@ -142,7 +142,6 @@ public class Frame extends JFrame {
 		    	  }
 		    	  evaluater.setExpression(input);
 		    	  action.execute(canvas.getPixmap());
-		    	  history.add(textField.getText());
 		    	  history.add(input);
 		    	  canvas.refresh(); 
 		}});
