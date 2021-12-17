@@ -226,6 +226,37 @@ public abstract class StringFunction extends ExpressionTreeNode{
 		}
 	}
 	
+	@Override
+	public String toString() {
+		String classname = this.getClass().getName();
+		return classname.substring(classname.lastIndexOf(".")) + "(" + s + ")";
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+
+		if (!(o instanceof StringFunction)) {
+			return false;
+		}
+
+		// Make sure the objects are the same type
+
+		if (o.getClass() != this.getClass()) {
+			return false;
+		}
+
+		StringFunction sf = (StringFunction) o;
+
+		// check if their parameters are equal
+		if (!this.s.equals(sf.s)) {
+			return false;
+		}
+		return true;
+	}
+	
 	}
 
 

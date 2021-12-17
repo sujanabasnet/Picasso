@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import picasso.parser.ExpressionTreeGenerator;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
+import picasso.parser.tokens.StringToken;
 
 /**
  * Tests of creating an expression tree from a string expression. Will have
@@ -271,20 +272,20 @@ public class ParsedExpressionTreeTests {
 	
 	@Test
 	public void ycrcbtorgbFunctionTests() {
-		ExpressionTreeNode r = parser.makeExpression("ycrcbtorgb(x)");
+		ExpressionTreeNode r = parser.makeExpression("yCrCbToRGB(x)");
 		assertEquals(new YCrCbToRGB(new X()), r);
 		
-		r = parser.makeExpression("ycrcbtorgb(x + y)");
+		r = parser.makeExpression("yCrCbToRGB(x + y)");
 		assertEquals(new YCrCbToRGB(new Addition(new X(), new Y())), r);
 		
 	}
 
 	@Test
 	public void rgbtoycrcbFunctionTests() {
-		ExpressionTreeNode rgb = parser.makeExpression("rgbtoycrcb(x)");
+		ExpressionTreeNode rgb = parser.makeExpression("RGBToYCrCb(x)");
 		assertEquals(new RGBToYCrCb(new X()), rgb);
 		
-		rgb = parser.makeExpression("rgbtoycrcb(x + y)");
+		rgb = parser.makeExpression("RGBToYCrCb(x + y)");
 		assertEquals(new RGBToYCrCb(new Addition(new X(), new Y())), rgb);
 		
 	}
@@ -304,9 +305,25 @@ public class ParsedExpressionTreeTests {
 	
 	@Test
 	public void imageWrapTests() {
-		String image = "\"image.jpg\"";
-		ExpressionTreeNode e = parser.makeExpression("imageWrap(\"image.jpg\", x+x, y)");
+		String image = "\"test.jpg\"";
+		ExpressionTreeNode e = parser.makeExpression("imageWrap(\"test.jpg\", x+x, y)");
 		assertEquals(new ImageWrap(image, new Addition(new X(), new Y()), new Y()), e);
 	}
+	
+	@Test
+	public void imageClipTests() {
+		String image = "\"test.jpg\"";
+		ExpressionTreeNode e = parser.makeExpression("imageClip(\"test.jpg\", x+x, y)");
+		assertEquals(new ImageClip(image, new Addition(new X(), new Y()), new Y()), e);
+	}
+	
+	@Test
+	public void StringsTests() {
+		ExpressionTreeNode e = parser.makeExpression("strings(\"hello\")");
+		System.out.println(e);
+		assertEquals(new Strings("hello"), e);
+	}
+
+
 
 }

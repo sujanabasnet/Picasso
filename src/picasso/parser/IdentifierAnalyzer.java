@@ -34,9 +34,8 @@ public class IdentifierAnalyzer implements SemanticAnalyzerInterface {
 		if (mapped != null) {
 			return mapped;
 		}
-
 		else {
-			throw new ParseException("Unknown Variable!");
+			throw new ParseException("Unknown Variable or Missing Operand!");
 		}
 	}
 
