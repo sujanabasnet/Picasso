@@ -27,9 +27,27 @@ public class Division extends BinaryOperator {
 	public RGBColor evaluate(double x, double y) {
 		RGBColor a = left.evaluate(x, y);
 		RGBColor b = right.evaluate(x, y);
-		double red = a.getRed() / b.getRed();
-		double green = a.getGreen() / b.getGreen();
-		double blue = a.getBlue() / b.getBlue();
+		double red; double green; double blue;
+		if (b.getRed() == 0) {
+			red = 0;
+		}
+		else { 
+			red = a.getRed() / b.getRed();
+		}
+		
+		if (b.getGreen() == 0) {
+			green = 0;
+		}
+		else {
+			 green = a.getGreen() / b.getGreen();
+		}
+		
+		if (b.getBlue() == 0) {
+			blue = 0;
+		}
+		else {
+			blue = a.getBlue() / b.getBlue();
+		}
 		return new RGBColor(red, green, blue);
 	}
 	
