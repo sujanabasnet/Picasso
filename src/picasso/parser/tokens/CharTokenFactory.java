@@ -41,6 +41,7 @@ public class CharTokenFactory {
 		tokenList[CharConstants.EXPONENT] = new ExponentiateToken(); 
 		tokenList[CharConstants.SLASH] = new SlashToken();
 		tokenList[CharConstants.MOD] = new ModToken();
+		tokenList[CharConstants.BANG] = new BangToken();
 
 
 		// TODO: What other tokens should be in here?

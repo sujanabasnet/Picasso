@@ -187,6 +187,14 @@ public class EvaluatorTests {
 		Y y = new Y();
 		Exponentiate a = new Exponentiate(x,y);
 		assertEquals(new RGBColor(0,0,0), a.evaluate(0,  1));
+	
+	}
+	
+	@Test
+	public void testNegateEvaluation() {
+		X x = new X();
+		Negate a = new Negate(x);
+		assertEquals(new RGBColor(1,1,1), a.evaluate(-1, -1));
 
 	} 
 	
